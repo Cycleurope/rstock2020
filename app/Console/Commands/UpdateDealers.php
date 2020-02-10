@@ -5,23 +5,23 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\BikesImport;
+use App\Imports\UsersImport;
 
-class UpdateBikes extends Command
+class UpdateDealers extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'bikes:update';
+    protected $signature = 'dealers:update';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Mise à jour du fichier de stocks';
+    protected $description = 'Mise à jour des comptes revendeurs';
 
     /**
      * Create a new command instance.
@@ -40,7 +40,7 @@ class UpdateBikes extends Command
      */
     public function handle()
     {
-    
+        ini_set('memory_limit', '256M');
         // $ftp = Storage::createFtpDriver([
         //     'host'      => '51.83.69.192',
         //     'username'  => 'gsvftp2020',
@@ -49,12 +49,11 @@ class UpdateBikes extends Command
         //     'timeout'   => 30
         // ]);
 
-        // $filename       = "public/export_products_".date('Ymd') . ".csv";
+        // $filename       = "public/users/export_users_".date('Ymd') . ".csv";
         // $filecontent    = $ftp->get($filename);
-        // Storage::disk('local')->put('products.csv', $filecontent);
-        $path = storage_path('app/products.csv');
+        // Storage::disk('local')->put('dealers.csv', $filecontent);
+        $path = storage_path('app/dealers.csv');
 
-        Excel::import(new BikesImport, $path);
-
+        Excel::import(new UsersImport, $path);
     }
 }

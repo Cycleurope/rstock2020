@@ -15,34 +15,36 @@ class UsersImport implements ToCollection, WithHeadingRow, WithStartRow
     */
     public function collection(Collection $collection)
     {
-        foreach ($rows as $row)
+        foreach ($collection as $row)
         {
-            $OPCUNO = $row['OPCUNO'];
-            $OPCUNM = $row['OPCUNM'];
-            $OPCUA1 = $row['OPCUA1'];
-            $OPCUA2 = $row['OPCUA2'];
-            $OPPONO = $row['OPPONO'];
-            $OPTOWN = $row['OPTOWN'];
-            $OPECAR = $row['OPECAR'];
-            $OPPHNO = $row['OPPHNO'];
-            $OKEMAL = $row['OKEMAL'];
+            $OPCUNO = $row['opcuno'];
+            $OPCUNM = $row['opcunm'];
+            $OPCUA1 = $row['opcua1'];
+            $OPCUA2 = $row['opcua2'];
+            $OPPONO = $row['oppono'];
+            $OPTOWN = $row['optown'];
+            $OPECAR = $row['opecar'];
+            $OPPHNO = $row['opphno'];
+            $OKEMAL = $row['okemal'];
+
+            if($OKEMAL != "") {
+                $user = User::firstOrCreate([
+                    'email'      => $OKEMAL,
+                ], [
+                    'username'      => $OPCUNO,
+                    'name'          => $OPCUNM,
+                    'address1'      => $OPCUA1,
+                    'address2'      => $OPCUA2,
+                    'postalcode'    => $OPPONO,
+                    'city'          => $OPTOWN,
+                    'phone'         => $OPPHNO,
+                    'email'         => $OKEMAL,
+                    'password'      => bcrypt('password'),
+                    'role'          => 'dealer',
+                    //'dep'           => $OKECAR,
+                ]);
+            }
             
-
-            if( User::where('username', $OPCUNO)->exists() ) {
-                break;
-            };
-
-            $user = User::create([
-                'username'      => $OPCUNO,
-                'name'          => $OPCUNM,
-                'address1'      => $OPCUA1,
-                'address2'      => $OPCUA2,
-                'postalcode'    => $OPPONO,
-                'city'          => $OPTOWN,
-                'phone'         => $OPPHNO,
-                'email'         => $OKEMAL,
-                'dep'           => $OKECAR,
-            ]);
         }
     }
 

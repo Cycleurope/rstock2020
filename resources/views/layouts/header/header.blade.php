@@ -6,7 +6,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a href="#" class="nav-link">Rechercher</a></li>
+                <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link">Tableau de bord</a></li>
+                <li class="nav-item"><a href="{{ route('search') }}" class="nav-link">Rechercher</a></li>
             </ul>
             <ul class="navbar-nav mr-auto">
                 @can('isAdmin')
