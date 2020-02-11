@@ -6,9 +6,11 @@ use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithStartRow;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 use App\Models\Bike;
 
-class BikesImport implements ToCollection, WithHeadingRow, WithStartRow
+class BikesImport implements ToCollection, WithHeadingRow, WithStartRow, WithChunkReading, ShouldQueue
 {
     private $assortments = ['BIA', 'PGT', 'GIT'];
     /**
@@ -48,6 +50,7 @@ class BikesImport implements ToCollection, WithHeadingRow, WithStartRow
                     'mbstat' => $MBSTAT,
                     'mbaval' => $MBAVAL,
                 ]);
+
             }
 
         }
@@ -56,5 +59,15 @@ class BikesImport implements ToCollection, WithHeadingRow, WithStartRow
     public function startRow(): int
     {
         return 2;
+    }
+
+    public function batchSize(): int
+    {
+        return 50;
+    }
+
+    public function chunkSize(): int
+    {
+        return 50;
     }
 }

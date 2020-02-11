@@ -99,43 +99,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 $(document).ready(function () {
-  var serial_value = '';
-  var serial_data = '';
-  $("#o--tasks").hide();
-  $("#o--info").hide();
   $(document).ready(function () {
-    $('#serials-table').DataTable({
-      language: {
-        processing: "Traitement en cours ...",
-        search: "Rechercher&nbsp;:&nbsp;",
-        lengthMenu: "Afficher _MENU_ &eacute;l&eacute;ments",
-        zeroRecords: "Aucun r&eacture;sultat",
-        info: "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
-        paginate: {
-          first: "Première page",
-          previous: "Pr&eacute;c&eacute;dent",
-          next: "Suivant",
-          last: "Dernière page"
-        },
-        emptyTable: "Aucune donn&eacute;e dans le tableau"
-      }
-    });
-    $('#fleet-table').DataTable({
-      language: {
-        processing: "Traitement en cours ...",
-        search: "Rechercher&nbsp;:&nbsp;",
-        lengthMenu: "Afficher _MENU_ &eacute;l&eacute;ments",
-        zeroRecords: "Aucun r&eacture;sultat",
-        info: "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
-        paginate: {
-          first: "Première page",
-          previous: "Pr&eacute;c&eacute;dent",
-          next: "Suivant",
-          last: "Dernière page"
-        },
-        emptyTable: "Aucune donn&eacute;e dans le tableau"
-      }
-    });
     $('#dealers-table').DataTable({
       language: {
         processing: "Traitement en cours ...",
@@ -149,66 +113,9 @@ $(document).ready(function () {
           next: "Suivant",
           last: "Dernière page"
         },
-        emptyTable: "Aucune donn&eacute;e dans le tableau"
+        emptyTable: "Aucune dealer dans le tableau"
       }
     });
-  });
-  $("#serial-checker").on('input', function (e) {
-    serial_value = e.target.value;
-
-    if (serial_value.length >= 8) {
-      $.ajax({
-        type: 'GET',
-        url: 'http://fleetmanager.mac/api/serials/search/' + serial_value,
-        success: function success(data) {
-          serial_data = data;
-
-          if (!$.isEmptyObject(serial_data)) {
-            if (serial_data.status == "available") {
-              $("#serial-info").html('<div class="flatnotification flatnotification-primary">"Vous devez d\'abord <a href="#">enregistrer ce vélo</a> avant mise en circulation.</div>');
-            } else {
-              $("#serial-info").html('<div class="flatnotification flatnotification-success">Nous recherchons les révisions existantes pour ce vélo ...</div>');
-              $("#o--tasks").fadeIn();
-            }
-          } else {
-            $("#serial-info").html('<div class="flatnotification flatnotification-destroy">Le numéro de série n\'a pas été reconnu.</div>');
-          }
-        }
-      });
-    } else {
-      $("#serial-info").html('');
-    }
-  });
-  $("#fleet-checker").on('input', function (e) {
-    serial_value = e.target.value;
-
-    if (serial_value.length >= 8) {
-      console.log('Length is 8');
-      $.ajax({
-        type: 'GET',
-        url: 'http://fleetmanager.mac/api/serials/search/' + serial_value,
-        success: function success(data) {
-          serial_data = data;
-
-          if (!$.isEmptyObject(serial_data)) {
-            if (serial_data.status == "used") {
-              $("#fleet-info").html('<div class="flatnotification flatnotification-danger">Ce numéro de série est déjà utilisé.</div>');
-            } else {
-              $("#fleet-info").html('<div class="flatnotification flatnotification-success">Ce numéro de série est disponible.</div>');
-              $("#o--info").fadeIn();
-            }
-          } else {
-            $("#fleet-info").html('<div class="flatnotification flatnotification-destroy">Le numéro de série n\'a pas été reconnu.</div>');
-          }
-        },
-        error: function error() {
-          console.log('Error');
-        }
-      });
-    } else {
-      $("#fleet-info").html('');
-      $("#o--info").fadeOut('fast');
-    }
   });
 });
 
@@ -232,8 +139,8 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/rlomvin/webapps/fleetmanager/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/rlomvin/webapps/fleetmanager/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/vincentlombard/www2020/rstock2020/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/vincentlombard/www2020/rstock2020/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

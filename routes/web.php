@@ -16,6 +16,7 @@ Route::get('/', function () {
     return view('home');
 })->middleware('guest')->name('home');
 
+Route::get('/dealers', 'AppController@dealers')->name('dealers');
 Route::get('/search', 'AppController@search')->name('search');
 
 Route::get('/dashboard', 'AppController@dashboard')->name('dashboard');

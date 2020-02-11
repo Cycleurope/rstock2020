@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
 
 class AppController extends Controller
 {
@@ -14,9 +15,9 @@ class AppController extends Controller
     }
 
     public function dashboard() {
-        $now = date('U');
+        $dealers = User::where('role', 'dealer')->paginate(20);        
         return view('dashboard', [
-
+            'dealers' => $dealers
         ]);
     }
 
@@ -28,6 +29,14 @@ class AppController extends Controller
     public function search()
     {
         return view('search');
+    }
+
+    public function dealers()
+    {
+        $dealers = User::where('role', 'dealer')->paginate(20);   
+        return view('admin.dealers', [
+            'dealers' => $dealers
+        ]);     
     }
 
 }

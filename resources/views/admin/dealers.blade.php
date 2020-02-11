@@ -6,12 +6,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <h1><span>Dashboard Administrateur</span></h1>
+                    <h1><span>Dealers</span></h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <table class="table table-sm">
+                    {{ $dealers->links() }}
+                    <table class="table table-sm" id="dealers-table">
                     @foreach($dealers as $dealer)
                     <tr>
                         <td>{{ $dealer->username }}</td>

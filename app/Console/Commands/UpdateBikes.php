@@ -5,7 +5,10 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 use App\Imports\BikesImport;
+
 
 class UpdateBikes extends Command
 {
@@ -41,17 +44,17 @@ class UpdateBikes extends Command
     public function handle()
     {
     
-        // $ftp = Storage::createFtpDriver([
-        //     'host'      => '51.83.69.192',
-        //     'username'  => 'gsvftp2020',
-        //     'password'  => 'Gsv2020ftp!',
-        //     'port'      => 21,
-        //     'timeout'   => 30
-        // ]);
+        $ftp = Storage::createFtpDriver([
+            'host'      => '51.83.69.192',
+            'username'  => 'gsvftp2020',
+            'password'  => 'Gsv2020ftp!',
+            'port'      => 21,
+            'timeout'   => 30
+        ]);
 
-        // $filename       = "public/export_products_".date('Ymd') . ".csv";
-        // $filecontent    = $ftp->get($filename);
-        // Storage::disk('local')->put('products.csv', $filecontent);
+        $filename       = "public/export_products_".date('Ymd') . ".csv";
+        $filecontent    = $ftp->get($filename);
+        Storage::disk('local')->put('products.csv', $filecontent);
         $path = storage_path('app/products.csv');
 
         Excel::import(new BikesImport, $path);

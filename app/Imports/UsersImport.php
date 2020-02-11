@@ -7,8 +7,11 @@ use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithStartRow;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+use App\Models\UserAssortment;
 
-class UsersImport implements ToCollection, WithHeadingRow, WithStartRow
+class UsersImport implements ToCollection, WithHeadingRow, WithStartRow, WithChunkReading, ShouldQueue
 {
     /**
     * @param Collection $collection
@@ -26,6 +29,8 @@ class UsersImport implements ToCollection, WithHeadingRow, WithStartRow
             $OPECAR = $row['opecar'];
             $OPPHNO = $row['opphno'];
             $OKEMAL = $row['okemal'];
+            $OIASCD = $row['ocascd'];
+            $OCTDAT = $row['octdat'];
 
             if($OKEMAL != "") {
                 $user = User::firstOrCreate([
@@ -43,6 +48,13 @@ class UsersImport implements ToCollection, WithHeadingRow, WithStartRow
                     'role'          => 'dealer',
                     //'dep'           => $OKECAR,
                 ]);
+
+                $assortment = UserAssortment::updateOrCreate([
+                    'ocascd' => $OIASCD,
+                    'user_id' => $user->id,
+                ], [
+                    'octdat' => $OCTDAT,
+                ]);
             }
             
         }
@@ -51,5 +63,15 @@ class UsersImport implements ToCollection, WithHeadingRow, WithStartRow
     public function startRow(): int
     {
         return 2;
+    }
+
+    public function batchSize(): int
+    {
+        return 50;
+    }
+
+    public function chunkSize(): int
+    {
+        return 50;
     }
 }
