@@ -31,12 +31,4 @@ class AppController extends Controller
         return view('search');
     }
 
-    public function dealers()
-    {
-        $dealers = User::where('role', 'dealer')->paginate(20);   
-        return view('admin.dealers', [
-            'dealers' => $dealers
-        ]);     
-    }
-
 }

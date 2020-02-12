@@ -25,6 +25,9 @@ class CreateBikesTable extends Migration
             $table->string('mmspe3')->nullable();
             $table->integer('mbstqt')->default(0);
             $table->integer('mbaval')->default(0);
+            $table->char('size', 2)->nullable();
+            $table->bigInteger('family_id')->nullable()->unsigned();
+            $table->foreign('family_id')->references('id')->on('bike_family')->onDelete('cascade');
             $table->timestamps();
         });
     }

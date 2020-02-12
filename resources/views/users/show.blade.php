@@ -6,8 +6,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <h1><span>Dashboard Administrateur</span></h1>
+                    <h1><span>{{ $dealer->username }}</span></h1>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
             </div>
         </div>
     </div>

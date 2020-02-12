@@ -21,7 +21,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        app('debugbar')->disable();
+        $users = User::where('role', 'dealer')->get();   
+        return view('users.index', [
+            'users' => $users
+        ]);  
     }
 
     /**
@@ -125,9 +129,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        dd($user);
+        $user = User::where('username', $user)->first();
+        return view('users.show', [
+            'dealer' => $user
+        ]);
     }
 
     /**

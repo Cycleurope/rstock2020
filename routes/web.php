@@ -16,11 +16,11 @@ Route::get('/', function () {
     return view('home');
 })->middleware('guest')->name('home');
 
-Route::get('/dealers', 'AppController@dealers')->name('dealers');
 Route::get('/search', 'AppController@search')->name('search');
 
 Route::get('/dashboard', 'AppController@dashboard')->name('dashboard');
 Route::get('/profile', 'AppController@profile')->name('profile');
+
 Route::get('/change-password', 'ChangePasswordController@index')->name('password.index');
 Route::post('/change-password', 'ChangePasswordController@store')->name('password.store');
 Route::get('/reset-password', 'ChangePasswordController@reset')->name('password.reset');
@@ -33,8 +33,9 @@ Route::get('/users/monitors', 'UserController@monitors')->name('users.monitors')
 Route::get('/users/guests', 'UserController@guests')->name('users.guests');
 Route::get('/users/dealers', 'UserController@dealers')->name('users.dealers');
 
+Route::get('/products', 'BikeController@index')->name('products.index');
+
 
 Route::get('/users/create/{role}', 'UserController@createWithRole')->name('users.create.role');
 
 Route::resource('/users', 'UserController');
-

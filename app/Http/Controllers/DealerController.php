@@ -18,10 +18,7 @@ class DealerController extends Controller
      */
     public function index()
     {
-        $dealers = User::where('role', 'dealer')->get();
-        return view('dealers.index', [
-            'dealers' => $dealers
-        ]);
+ 
     }
 
     /**
@@ -31,7 +28,6 @@ class DealerController extends Controller
      */
     public function create()
     {
-        return view('dealers.create');
     }
 
     /**
@@ -51,9 +47,9 @@ class DealerController extends Controller
      * @param  \App\Dealer  $dealer
      * @return \Illuminate\Http\Response
      */
-    public function show(Dealer $dealer)
+    public function show(User $dealer)
     {
-        //
+
     }
 
     /**
@@ -64,7 +60,6 @@ class DealerController extends Controller
      */
     public function edit(Dealer $dealer)
     {
-        dd("ok");
         $dealer = User::find($id);
     }
 

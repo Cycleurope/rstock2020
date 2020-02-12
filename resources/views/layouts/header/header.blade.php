@@ -7,8 +7,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link">Tableau de bord</a></li>
-                <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link">Comptes Clients</a></li>
-                <li class="nav-item"><a href="{{ route('search') }}" class="nav-link">Rechercher</a></li>
+                <li class="nav-item"><a href="{{ route('users.index') }}" class="nav-link">Comptes Clients</a></li>
+                <li class="nav-item"><a href="{{ route('products.index') }}" class="nav-link">Rechercher</a></li>
             </ul>
             <ul class="navbar-nav ml-auto">
             </ul>

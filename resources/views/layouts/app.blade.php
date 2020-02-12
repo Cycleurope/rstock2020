@@ -12,6 +12,32 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <title>RStock</title>
+    <style>
+        .dataTables_filter {
+            width: 100%;
+        }
+        .dataTables_filter label {
+            box-sizing: border-box;
+            width: 100%;
+            display: block;
+            text-align: left;
+            padding: 0.5em 0 !important;
+            font-weight: 600;
+        }
+        .dataTables_filter input {
+            box-sizing: border-box;
+            padding: 0.5em;
+            width: 100%;
+            display: block;
+            margin: 0 !important;
+            border: 1px solid #dddddd;
+            background: #fafafa;
+            border: radius: 0.15em;
+            outline: none;
+            font-size: 2em;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
     @include('layouts.header.header')

@@ -9,6 +9,7 @@ use Maatwebsite\Excel\Concerns\WithStartRow;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use App\Models\Bike;
+use App\Models\BikeFamily;
 
 class BikesImport implements ToCollection, WithHeadingRow, WithStartRow, WithChunkReading, ShouldQueue
 {
@@ -32,11 +33,19 @@ class BikesImport implements ToCollection, WithHeadingRow, WithStartRow, WithChu
             $MBAVAL = intval($row['mbaval']);
             $MBSTQT = intval($row['mbstqt']);
             $OIASCD = $row['oiascd'];
+            $family_id = null;
+            $size = null;
 
             // Doit etre un vélo
             // La longueur de MMITNO doit etre supérieure à 6 (ne pas être un master seul)
             // Le statut ne doit pas être en 80
-            if($MBSTAT != 80) {
+            if(BikeFamily::where('mmitgr', $MMITGR)->exists()) {
+                $family = BikeFamily::where('mmitgr', $MMITGR)->first();
+                $family_id = $family->id;
+                $size = substr($MMITNO, 6, 2);
+            }
+
+            if(($MBSTAT != 80) && (strlen($MMITNO) > 6)) {
                 $bike = Bike::updateOrCreate([
                     'mmitno' => $MMITNO,
                 ], [
@@ -49,6 +58,8 @@ class BikesImport implements ToCollection, WithHeadingRow, WithStartRow, WithChu
                     'mmspe3' => $MMSPE3,
                     'mbstat' => $MBSTAT,
                     'mbaval' => $MBAVAL,
+                    'size' => $size,
+                    'family_id' => $family_id,
                 ]);
 
             }
