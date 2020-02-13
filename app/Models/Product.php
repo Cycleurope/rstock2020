@@ -3,17 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\BikeFamily;
+use App\Models\ProductFamily;
+use App\Models\ProductAssortment;
 
-class Bike extends Model
+class Product extends Model
 {
-    protected $table = 'bikes';
+    protected $table = 'products';
 
     protected $fillable = ['mmitno', 'mmitds', 'mmitcl', 'mmitgr', 'mbaval', 'mbstat', 'mbstqt', 'mmspe1', 'mmspe2', 'mmspe3', 'size', 'family_id'];
 
     public function family()
     {
-        return $this->belongsTo(BikeFamily::class);
+        return $this->belongsTo(ProductFamily::class);
     }
 
     public function statusBadge()
@@ -35,4 +36,11 @@ class Bike extends Model
 
         return $badge;
     }
+
+    public function assortments()
+    {
+        return $this->belongsToMany(ProductAssortment::class);
+    }
+
+
 }

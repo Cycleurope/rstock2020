@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(MMITGRTableSeeder::class);
+        $this->call(ProductFamilyTableSeeder::class);
         $this->call(UsersTableSeeder::class);
     }
 }

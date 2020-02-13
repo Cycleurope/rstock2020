@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserAssortment extends Model
 {
-    protected $table = "user_assortments";
+    protected $table = "userassortments";
 
     protected $fillable = ['ocascd', 'user_id', 'octdat'];
 

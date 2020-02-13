@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableBikeFamily extends Migration
+class CreateTableProductAssortmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateTableBikeFamily extends Migration
      */
     public function up()
     {
-        Schema::create('bike_family', function (Blueprint $table) {
+        Schema::create('product_assortments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('mmitgr');
-            $table->string('name');
+            $table->string('oiascd');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateTableBikeFamily extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bike_family');
+        Schema::dropIfExists('product_assortments');
     }
 }

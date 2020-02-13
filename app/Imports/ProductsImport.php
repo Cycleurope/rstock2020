@@ -8,10 +8,11 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
-use App\Models\Bike;
-use App\Models\BikeFamily;
+use App\Models\Product;
+use App\Models\ProductFamily;
+use App\Models\ProductAssortment;
 
-class BikesImport implements ToCollection, WithHeadingRow, WithStartRow, WithChunkReading, ShouldQueue
+class ProductsImport implements ToCollection, WithHeadingRow, WithStartRow, WithChunkReading, ShouldQueue
 {
     private $assortments = ['BIA', 'PGT', 'GIT'];
     /**
@@ -39,14 +40,14 @@ class BikesImport implements ToCollection, WithHeadingRow, WithStartRow, WithChu
             // Doit etre un vélo
             // La longueur de MMITNO doit etre supérieure à 6 (ne pas être un master seul)
             // Le statut ne doit pas être en 80
-            if(BikeFamily::where('mmitgr', $MMITGR)->exists()) {
-                $family = BikeFamily::where('mmitgr', $MMITGR)->first();
+            if(ProductFamily::where('mmitgr', $MMITGR)->exists()) {
+                $family = ProductFamily::where('mmitgr', $MMITGR)->first();
                 $family_id = $family->id;
                 $size = substr($MMITNO, 6, 2);
             }
 
             if(($MBSTAT != 80) && (strlen($MMITNO) > 6)) {
-                $bike = Bike::updateOrCreate([
+                $product = Product::updateOrCreate([
                     'mmitno' => $MMITNO,
                 ], [
                     'mmitno' => $MMITNO,
@@ -61,6 +62,12 @@ class BikesImport implements ToCollection, WithHeadingRow, WithStartRow, WithChu
                     'size' => $size,
                     'family_id' => $family_id,
                 ]);
+
+                $product_assortment = ProductAssortment::firstOrCreate([
+                    'oiascd' => $OIASCD,
+                ]);
+
+                $product->assortments()->attach($product->id);
 
             }
 

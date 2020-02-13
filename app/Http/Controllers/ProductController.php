@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Bike;
+use App\Models\Product;
 
-class BikeController extends Controller
+class ProductController extends Controller
 {
     public function index()
     {
-        $products = Bike::all();
+        $products = Product::all();
         return view('products.index', [
             'products' => $products
         ]);

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBikesTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBikesTable extends Migration
      */
     public function up()
     {
-        Schema::create('bikes', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('mmitno');
             $table->string('mmitds')->nullable();
@@ -27,7 +27,7 @@ class CreateBikesTable extends Migration
             $table->integer('mbaval')->default(0);
             $table->char('size', 2)->nullable();
             $table->bigInteger('family_id')->nullable()->unsigned();
-            $table->foreign('family_id')->references('id')->on('bike_family')->onDelete('cascade');
+            $table->foreign('family_id')->references('id')->on('product_family')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -39,6 +39,6 @@ class CreateBikesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bikes');
+        Schema::dropIfExists('products');
     }
 }

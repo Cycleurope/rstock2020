@@ -33,7 +33,7 @@ Route::get('/users/monitors', 'UserController@monitors')->name('users.monitors')
 Route::get('/users/guests', 'UserController@guests')->name('users.guests');
 Route::get('/users/dealers', 'UserController@dealers')->name('users.dealers');
 
-Route::get('/products', 'BikeController@index')->name('products.index');
+Route::get('/products', 'ProductController@index')->name('products.index');
 
 
 Route::get('/users/create/{role}', 'UserController@createWithRole')->name('users.create.role');
