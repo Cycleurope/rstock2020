@@ -47,6 +47,17 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithStartRow, With
             }
 
             if(($MBSTAT != 80) && (strlen($MMITNO) > 6)) {
+
+                if(substr($MMITGR, 0, 1) == "C") {
+                    $product_type = "part";
+                } elseif((substr($MMITGR, 0, 1) == "B") && (substr($MMITNO, 0, 1) == "Y")) {
+                    $product_type = "bike";
+                } elseif((substr($MMITGR, 0, 1) == "X")) {
+                    $product_type = "frame";
+                } else {
+                    $product_type = "other";
+                }
+
                 $product = Product::updateOrCreate([
                     'mmitno' => $MMITNO,
                 ], [
@@ -61,13 +72,12 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithStartRow, With
                     'mbaval' => $MBAVAL,
                     'size' => $size,
                     'family_id' => $family_id,
+                    'type' => $product_type
                 ]);
 
-                $product_assortment = ProductAssortment::firstOrCreate([
-                    'oiascd' => $OIASCD,
-                ]);
-
-                $product->assortments()->attach($product->id);
+                // $product_assortment = ProductAssortment::firstOrCreate([
+                //     'oiascd' => $OIASCD,
+                // ]);
 
             }
 

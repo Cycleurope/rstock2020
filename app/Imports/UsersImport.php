@@ -31,8 +31,10 @@ class UsersImport implements ToCollection, WithHeadingRow, WithStartRow, WithChu
             $OKEMAL = $row['okemal'];
             $OIASCD = $row['ocascd'];
             $OCTDAT = $row['octdat'];
+            $OKSTAT = intval($row['okstat']);
+            $OPADID = $row["opadid"];
 
-            if($OKEMAL != "") {
+            if($OKEMAL != "" && ($OKSTAT == 20) && ($OPADID == "")) {
                 $user = User::firstOrCreate([
                     'email'      => $OKEMAL,
                 ], [

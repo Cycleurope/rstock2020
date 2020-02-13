@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <h1><span>Dealers</span></h1>
+                    <h1><span>Comptes Clients</span></h1>
                 </div>
             </div>
             <div class="row">
@@ -31,7 +31,7 @@
                         <td> {{ $user->city }}</td>
                         <td>
                             @foreach($user->assortments as $a)
-                            <span class="badge flatbadge flatbadge-blue">{{ $a->ocascd }} : {{ $a->octdat }}</span>
+                            {!! $a->assortmentBadge() !!}
                             @endforeach
                         </td>
                         <td><a href="{{ route('users.show', $user->username) }}" class="">Consulter</a></td>

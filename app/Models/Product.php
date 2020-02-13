@@ -10,7 +10,7 @@ class Product extends Model
 {
     protected $table = 'products';
 
-    protected $fillable = ['mmitno', 'mmitds', 'mmitcl', 'mmitgr', 'mbaval', 'mbstat', 'mbstqt', 'mmspe1', 'mmspe2', 'mmspe3', 'size', 'family_id'];
+    protected $fillable = ['mmitno', 'mmitds', 'mmitcl', 'mmitgr', 'mbaval', 'mbstat', 'mbstqt', 'mmspe1', 'mmspe2', 'mmspe3', 'size', 'family_id', 'type'];
 
     public function family()
     {
@@ -35,11 +35,6 @@ class Product extends Model
         endswitch;
 
         return $badge;
-    }
-
-    public function assortments()
-    {
-        return $this->belongsToMany(ProductAssortment::class);
     }
 
 

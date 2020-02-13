@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
-<div id="app" class="py-5">
+<div id="app" class="py-2">
     @include('partials/notifications-panel')
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <h1>Products</h1>
+                <h1>Recherche</h1>
             </div>
             <div class="col-12">
                 <div class="table-responsive">
@@ -34,7 +34,12 @@
                                 <tr class="text-danger">
                             @endif
                                 <td>{{ $p->mmitno }}</td>
-                                <td>{{ $p->mmitds }}</td>
+                                <td>
+                                    @if($p->type == "frame")
+                                    <span class="flatbadge bg-primary text-light">FRAME KIT</span>
+                                    @endif
+                                    {{ $p->mmitds }}
+                                </td>
                                 <td>{{ $p->mmitcl }}</td>
                                 <td>{{ $p->mmspe1 }}</td>
                                 <td>{{ $p->mmspe2 }}</td>

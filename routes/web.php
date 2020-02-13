@@ -17,6 +17,8 @@ Route::get('/', function () {
 })->middleware('guest')->name('home');
 
 Route::get('/search', 'AppController@search')->name('search');
+Route::get('/export-dealers', 'AppController@exportDealers')->name('export.dealers');
+Route::get('/export-stock', 'AppController@exportProducts')->name('export.stock');
 
 Route::get('/dashboard', 'AppController@dashboard')->name('dashboard');
 Route::get('/profile', 'AppController@profile')->name('profile');

@@ -10,11 +10,6 @@ class ProductAssortment extends Model
 
     protected $table = "product_assortments";
 
-    protected $fillable = ['oiascd', 'product_id'];
-
-    public function products()
-    {
-        return $this->belongsToMany(Product::class);
-    }
+    protected $fillable = ['oiascd'];
 
 }
