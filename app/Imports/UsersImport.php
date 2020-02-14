@@ -29,7 +29,7 @@ class UsersImport implements ToCollection, WithHeadingRow, WithStartRow, WithChu
             $OPECAR = $row['opecar'];
             $OPPHNO = $row['opphno'];
             $OKEMAL = $row['okemal'];
-            $OIASCD = $row['ocascd'];
+            $OCASCD = $row['ocascd'];
             $OCTDAT = $row['octdat'];
             $OKSTAT = intval($row['okstat']);
             $OPADID = $row["opadid"];
@@ -52,7 +52,7 @@ class UsersImport implements ToCollection, WithHeadingRow, WithStartRow, WithChu
                 ]);
 
                 $assortment = UserAssortment::updateOrCreate([
-                    'ocascd' => $OIASCD,
+                    'ocascd' => htmlspecialchars_decode(str_replace('/', "_", $OCASCD)),
                     'user_id' => $user->id,
                 ], [
                     'octdat' => $OCTDAT,

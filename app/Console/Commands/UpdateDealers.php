@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
+use App\Models\UserAssortment;
+use DB;
 
 class UpdateDealers extends Command
 {
@@ -40,7 +42,7 @@ class UpdateDealers extends Command
      */
     public function handle()
     {
-        ini_set('memory_limit', '256M');
+        // ini_set('memory_limit', '256M');
         // $ftp = Storage::createFtpDriver([
         //     'host'      => '51.83.69.192',
         //     'username'  => 'gsvftp2020',
@@ -54,6 +56,10 @@ class UpdateDealers extends Command
         // Storage::disk('local')->put('dealers.csv', $filecontent);
         $path = storage_path('app/dealers.csv');
 
+        UserAssortment::truncate();
+
         Excel::import(new UsersImport, $path);
+
+
     }
 }

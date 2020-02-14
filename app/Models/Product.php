@@ -37,5 +37,10 @@ class Product extends Model
         return $badge;
     }
 
+    public function assortments()
+    {
+        return $this->hasMany(ProductAssortment::class);
+    }
+
 
 }

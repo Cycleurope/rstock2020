@@ -16,6 +16,8 @@ class CreateTableProductAssortmentsTable extends Migration
         Schema::create('product_assortments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('oiascd');
+            $table->bigInteger('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }

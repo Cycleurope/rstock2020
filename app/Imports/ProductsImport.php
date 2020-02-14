@@ -75,9 +75,10 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithStartRow, With
                     'type' => $product_type
                 ]);
 
-                // $product_assortment = ProductAssortment::firstOrCreate([
-                //     'oiascd' => $OIASCD,
-                // ]);
+                $product_assortment = ProductAssortment::firstOrCreate([
+                    'oiascd' => htmlspecialchars_decode(str_replace('/', "_", $OIASCD)),
+                    'product_id' => $product->id
+                ]);
 
             }
 
