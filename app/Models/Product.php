@@ -21,16 +21,36 @@ class Product extends Model
     {
         switch($this->mbstat):
             case 20:
-                $badge = '<div class="flatbadge flatbadge-green">'.$this->mbstat.' - Disponible</div/>';
+                $badge = '<div class="flatbadge flatbadge-green">'.$this->mbstat.' - Ouvert</div/>';
             break;
             case 50:
                 $badge = '<div class="flatbadge bg-warning">'.$this->mbstat.' - Bientôt épuisé</div/>';
             break;
-            case 90:
-                $badge = '<div class="flatbadge bg-danger">'.$this->mbstat.' - Non disponible</div/>';
+            case 80:
+                $badge = '<div class="flatbadge bg-danger text-light">'.$this->mbstat.' - Fermé</div/>';
             break;
             default:
                 $badge = '<div class="flatbadge">'.$this->mbstat.' -  ??? </div/>';
+
+        endswitch;
+
+        return $badge;
+    }
+
+    public function statusBadgeForDealers()
+    {
+        switch($this->mbstat):
+            case 20:
+                $badge = '<div class="flatbadge flatbadge-green">Disponible</div/>';
+            break;
+            case 50:
+                $badge = '<div class="flatbadge bg-warning">Bientôt épuisé</div/>';
+            break;
+            case 80:
+                $badge = '<div class="flatbadge bg-danger text-light">Indisponible</div/>';
+            break;
+            default:
+                $badge = '<div class="flatbadge">???</div/>';
 
         endswitch;
 

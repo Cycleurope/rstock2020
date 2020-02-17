@@ -12,7 +12,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('can:isAdmin');
     }
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('admins.create');
     }
 
     public function createWithRole($role)
@@ -191,32 +191,9 @@ class UserController extends Controller
     public function admins()
     {
         $users = User::where('role', 'admin')->get();
-        return view('users.admins', [
+        return view('admins.index', [
             'users' => $users
         ]);
     }
 
-    public function monitors()
-    {
-        $users = User::where('role', 'bank')->get();
-        return view('users.monitors', [
-            'users' => $users
-        ]);
-    }
-
-    public function guests()
-    {
-        $users = User::where('role', 'guest')->get();
-        return view('users.guests', [
-            'users' => $users
-        ]);
-    }
-
-    public function dealers()
-    {
-        $users = User::where('role', 'dealer')->get();
-        return view('users.dealers', [
-            'users' => $users
-        ]);
-    }
 }

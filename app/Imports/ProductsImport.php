@@ -37,6 +37,8 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithStartRow, With
             $family_id = null;
             $size = null;
 
+            dd(strlen($MMITNO));
+
             // Doit etre un vélo
             // La longueur de MMITNO doit etre supérieure à 6 (ne pas être un master seul)
             // Le statut ne doit pas être en 80
@@ -46,7 +48,7 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithStartRow, With
                 $size = substr($MMITNO, 6, 2);
             }
 
-            if(($MBSTAT != 80) && (strlen($MMITNO) > 6)) {
+            if((strlen($MMITNO) > 6)) {
 
                 if(substr($MMITGR, 0, 1) == "C") {
                     $product_type = "part";
@@ -92,11 +94,11 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithStartRow, With
 
     public function batchSize(): int
     {
-        return 50;
+        return 200;
     }
 
     public function chunkSize(): int
     {
-        return 50;
+        return 200;
     }
 }

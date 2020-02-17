@@ -38,15 +38,15 @@
                                     @if($p->type == "frame")
                                     <span class="flatbadge bg-primary text-light">FRAME KIT</span>
                                     @endif
-                                    <span class="font-weight-bold">{{ $p->mmitds }}</span>
+                                    {{ $p->mmitds }}
                                 </td>
                                 <td>{{ $p->mmitcl }}</td>
                                 <td>{{ $p->mmspe1 }}</td>
                                 <td>{{ $p->mmspe2 }}</td>
                                 <td>{{ $p->size }}</td>
                                 <td>{{ $p->mmspe3 }}</td>
-                                <td>{!! $p->statusBadgeForDealers() !!}</td>
-                                <td class="text-right font-weight-bold">{{ $p->mbaval }}</td>
+                                <td>{!! $p->statusBadge() !!}</td>
+                                <td class="text-right">{{ $p->mbaval }}</td>
                                 <td>
                                 @if($p->family != null)
                                 {{ $p->family->name }}

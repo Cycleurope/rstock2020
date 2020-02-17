@@ -16,7 +16,13 @@
                     <h2>Assortiments Utilisateurs</h2>
                     <ul class="list-group list-group-flush">
                         @foreach($users_assortments as $ua)
-                        <li class="list-group-item d-flex justify-content-between align-items-center"><span><span class="font-weight-bold">{{ $ua->ocascd }} : </span>{{ $ua->total }}</span><a href="" class="btn flatbutton btn-sm">Exporter</a></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center"><span>
+                            @component('components.assortment-admin')
+                                @slot('name')
+                                {{ $ua->ocascd }}
+                                @endslot
+                            @endcomponent
+                            : </span>{{ $ua->total }}</span>
                         @endforeach
                     </ul>
                 </div>

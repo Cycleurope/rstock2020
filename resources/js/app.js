@@ -9,4 +9,8 @@ $(document).ready(function() {
         "pageLength": 25
       });
 
+      $('.summernote-field').summernote({
+        height:300,
+      });
+
 });

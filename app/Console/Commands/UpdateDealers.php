@@ -42,18 +42,18 @@ class UpdateDealers extends Command
      */
     public function handle()
     {
-        // ini_set('memory_limit', '256M');
-        // $ftp = Storage::createFtpDriver([
-        //     'host'      => '51.83.69.192',
-        //     'username'  => 'gsvftp2020',
-        //     'password'  => 'Gsv2020ftp!',
-        //     'port'      => 21,
-        //     'timeout'   => 30
-        // ]);
+        ini_set('memory_limit', '256M');
+        $ftp = Storage::createFtpDriver([
+            'host'      => '51.83.69.192',
+            'username'  => 'gsvftp2020',
+            'password'  => 'Gsv2020ftp!',
+            'port'      => 21,
+            'timeout'   => 30
+        ]);
 
-        // $filename       = "public/users/export_users_".date('Ymd') . ".csv";
-        // $filecontent    = $ftp->get($filename);
-        // Storage::disk('local')->put('dealers.csv', $filecontent);
+        $filename       = "public/users/export_users_".date('Ymd') . ".csv";
+        $filecontent    = $ftp->get($filename);
+        Storage::disk('local')->put('dealers.csv', $filecontent);
         $path = storage_path('app/dealers.csv');
 
         UserAssortment::truncate();

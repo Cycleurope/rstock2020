@@ -2,18 +2,18 @@
 @section('content')
 <div id="app" class="py-5">
     @include('partials/notifications-panel')
-    <div class="container">
+    <div class="container-fluid px-5">
         <div class="row">
-            <div class="col">
+            <div class="col-12">
                 <h1>Profil</h1>
             </div>
-            <div class="col-12">
+            <div class="col-8 mb-5">
                 <h3>Mes informations</h3>
                 <table class="table table-sm">
                     <thead>
                         <tr>
-                            <th></th>
-                            <th></th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,6 +49,31 @@
                             <td><span class="font-weight-bold">E-mail</span></td>
                             <td>{{ Auth::user()->email }}</td>
                         </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4 mb-5">
+                <h3>Mes assortiments</h3>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Catalogue</th>
+                            <th class="text-right">Jusqu'au</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(Auth::user()->assortments as $a)
+                        <tr>
+                            <td>
+                                @component('components.assortment')
+                                    @slot('name')
+                                    {{ $a->ocascd }}
+                                    @endslot
+                                @endcomponent
+                            </td>
+                            <td class="text-right">{{ $a->octdat }}</td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

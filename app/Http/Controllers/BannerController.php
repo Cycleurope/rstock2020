@@ -3,17 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Banner;
 
 class BannerController extends Controller
 {
+    public function __contruct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $this->middleware('auth');
+    {   
+        $banners = Banner::all();
+        return view('banners.index', [
+            'banners' => $banners
+        ]);
     }
 
     /**
@@ -23,7 +31,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        return view('banners.index');
+        return view('banners.create');
     }
 
     /**
@@ -34,7 +42,17 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $banner = Banner::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'banner-trixFields' => request('banner-trixFields')
+        ]);
+
+        return redirect()->route('banners.index')
+            ->with('class', 'success')
+            ->with('message', 'Le billboard a bien été ajouté.');
+
     }
 
     /**
@@ -56,8 +74,10 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        $banner = "";
-        return view('banners.edit');
+        $banner = Banner::find($id);
+        return view('banners.edit', [
+            'banner' => $banner
+        ]);
     }
 
     /**
@@ -69,7 +89,15 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $banner = Banner::find($id)->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'banner-trixFields' => request('banner-trixFields')
+        ]);
+
+        return redirect()->route('banners.index')
+            ->with('class', 'success')
+            ->with('message', 'Le billboard a bien été modifié.');
     }
 
     /**
@@ -80,6 +108,11 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $banner = Banner::find($id)->delete();
+
+        return redirect()->route('banners.index')
+            ->with('class', 'danger')
+            ->with('message', 'Le billboard a bien été supprimé.');
+
     }
 }

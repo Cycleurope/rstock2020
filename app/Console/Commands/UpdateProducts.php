@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ProductsImport;
 
-
 class UpdateProducts extends Command
 {
     /**
@@ -42,6 +41,7 @@ class UpdateProducts extends Command
     public function handle()
     {
     
+        ini_set('memory_limit', '256M');
         // $ftp = Storage::createFtpDriver([
         //     'host'      => '51.83.69.192',
         //     'username'  => 'gsvftp2020',
@@ -54,6 +54,10 @@ class UpdateProducts extends Command
         // $filecontent    = $ftp->get($filename);
         // Storage::disk('local')->put('products.csv', $filecontent);
         $path = storage_path('app/products.csv');
+
+        Storage::put('file.txt', date('Y-m-d H:i:s'));
+
+        
 
         Excel::import(new ProductsImport, $path);
 

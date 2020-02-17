@@ -7,7 +7,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link">Tableau de bord</a></li>
+                @can('isAdmin')
                 <li class="nav-item"><a href="{{ route('users.index') }}" class="nav-link">Comptes Clients</a></li>
+                @endcan
                 <li class="nav-item"><a href="{{ route('products.index') }}" class="nav-link">Rechercher</a></li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -20,7 +22,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="{{ route('users.admins') }}"><i class="fa fa-users mr-2"></i>Comptes Administrateur</a>
-                      <a class="dropdown-item" href="{{ route('users.create') }}"><i class="fa fa-user-plus mr-2"></i>Nouveau compte</a>
+                      <a class="dropdown-item" href="{{ route('users.create', ['role' => 'admin']) }}"><i class="fa fa-user-plus mr-2"></i>Nouveau compte</a>
                     </div>
                 </li>
                 @endcan

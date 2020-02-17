@@ -1,0 +1,1 @@
+* * * * * /rlomvin/webapps/rstock2020/ php artisan dealers:update >/dev/null 2>&1

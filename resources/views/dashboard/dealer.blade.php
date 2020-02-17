@@ -10,12 +10,14 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col">
-                    <h3>Assortiments</h3>
+                <div class="col-12 mb-5">
+                    @foreach($banners as $banner)
+                    <div class="flatnotification py-4 mb-2">
+                        <h2 class="mb-3">{{ $banner->title }}</h2>
+                        <div>{{ $banner->content }}</div>
+                    </div>
+                    @endforeach
                 </div>
-            </div>
-            <div class="row">
-
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 use App\User;
+use App\Models\Banner;
 use App\Models\UserAssortment;
 use App\Exports\DealersByAssortmentExport;
 use App\Exports\StockExport;
@@ -21,11 +22,13 @@ class AppController extends Controller
 
     public function dashboard() {
         $dealers = User::where('role', 'dealer')->paginate(20);
+        $banners = Banner::all();
 
         $users_assortments = UserAssortment::select('ocascd', DB::raw('count(*) as total'))->groupBy('ocascd')->orderBy('total', 'desc')->get();
         return view('dashboard', [
             'dealers' => $dealers,
-            'users_assortments' => $users_assortments
+            'users_assortments' => $users_assortments,
+            'banners' => $banners
         ]);
     }
 

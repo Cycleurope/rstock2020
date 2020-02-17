@@ -102,6 +102,9 @@ $(document).ready(function () {
   $("#dealers-table").dataTable({
     "pageLength": 25
   });
+  $('.summernote-field').summernote({
+    height: 300
+  });
 });
 
 /***/ }),

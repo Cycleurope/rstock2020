@@ -41,3 +41,5 @@ Route::get('/products', 'ProductController@index')->name('products.index');
 Route::get('/users/create/{role}', 'UserController@createWithRole')->name('users.create.role');
 
 Route::resource('/users', 'UserController');
+
+Route::resource('/banners', 'BannerController');
