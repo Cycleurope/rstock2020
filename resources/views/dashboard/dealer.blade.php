@@ -14,7 +14,7 @@
                     @foreach($banners as $banner)
                     <div class="flatnotification py-4 mb-2">
                         <h2 class="mb-3">{{ $banner->title }}</h2>
-                        <div>{{ $banner->content }}</div>
+                        <div>{!! $banner->content !!}</div>
                     </div>
                     @endforeach
                 </div>
