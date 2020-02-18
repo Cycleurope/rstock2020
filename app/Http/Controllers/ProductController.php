@@ -35,7 +35,7 @@ class ProductController extends Controller
 
         } else {
 
-            $products = Product::all();
+            $products = Product::whereIn('type', ['bike', 'frame']);
 
             return view('products.index-admin', [
                 'products' => $products
