@@ -22,7 +22,7 @@ class ProductController extends Controller
 
             $products = Product::whereHas('assortments', function($q) use ($assortments_array) {
                 $q->whereIn('oiascd', $assortments_array);
-                $q->whereIn('type', ['frame', 'bike', 'part']);
+                $q->whereIn('type', ['frame', 'bike']);
             })->where(function($q) {
                 $q->where('mbstat', 20);
                 $q->orWhere('mbstat', 50);
