@@ -37,8 +37,6 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithStartRow, With
             $family_id = null;
             $size = null;
 
-            dd(strlen($MMITNO));
-
             // Doit etre un vélo
             // La longueur de MMITNO doit etre supérieure à 6 (ne pas être un master seul)
             // Le statut ne doit pas être en 80
