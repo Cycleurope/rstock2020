@@ -24,9 +24,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
-        $schedule->command('products:update')->everyMinute();
+        $schedule->command('dealers:update')->dailyAt('05:00');
+        $schedule->command('products:update')->dailyAt('06:00');
+        $schedule->command('products:update')->dailyAt('10:00');
+        $schedule->command('products:update')->dailyAt('12:30');
+        $schedule->command('products:update')->dailyAt('15:30');
+        $schedule->command('products:update')->dailyAt('19:00');
     }
 
     /**
