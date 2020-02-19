@@ -47,6 +47,8 @@ class ChangePasswordController extends Controller
         //     'email' => ['required', new MatchEmailAddress]
         // ]);
 
+        echo "Send New Password";
+
         $data = [
             'name' => 'John Doe',
             'body' => 'body body'

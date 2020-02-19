@@ -20,26 +20,26 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{ route('password.send.new') }}" method="POST">
+                    <form action="{{ route('password.send.new') }}" method="POST">
                     @csrf
-    
-                <div class="row">
-                    <div class="col-12">
-                        @foreach ($errors->all() as $error)
-                        <p class="text-danger">{{ $error }}</p>
-                     @endforeach 
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="">Adresse e-mail de contact</label>
-                            <input type="email"  name="email" class="form-control flatcontrol">
+        
+                    <div class="row">
+                        <div class="col-12">
+                            @foreach ($errors->all() as $error)
+                            <p class="text-danger">{{ $error }}</p>
+                        @endforeach 
                         </div>
-                        <input type="submit" class="btn flatbutton col" value="Envoyer un nouveau mot de passe">
                     </div>
-                </div>
-            </form>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="">Adresse e-mail de contact</label>
+                                <input type="email"  name="email" class="form-control flatcontrol">
+                            </div>
+                            <input type="submit" class="btn flatbutton col" value="Envoyer un nouveau mot de passe">
+                        </div>
+                    </div>
+                </form>
     
                 <div class="row ">
                     <div class="col">
