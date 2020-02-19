@@ -38,7 +38,7 @@
                                     @if($p->type == "frame")
                                     <span class="flatbadge bg-primary text-light">FRAME KIT</span>
                                     @endif
-                                    <span class="font-weight-bold">{{ $p->mmitds }}</span>
+                                    <span class="font-weight-bold">{!! $p->designation() !!}</span>
                                 </td>
                                 <td>{{ $p->mmitcl }}</td>
                                 <td>{{ $p->mmspe1 }}</td>

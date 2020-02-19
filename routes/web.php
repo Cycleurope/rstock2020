@@ -27,6 +27,10 @@ Route::get('/change-password', 'ChangePasswordController@index')->name('password
 Route::post('/change-password', 'ChangePasswordController@store')->name('password.store');
 Route::get('/reset-password', 'ChangePasswordController@reset')->name('password.reset');
 Route::get('/send-new-password', 'ChangePasswordController@send')->name('password.send');
+
+Route::get('/import-passwords', 'ChangePasswordController@importForm')->name('passwords.import.form');
+Route::post('/import-passwords/process', 'ChangePasswordController@import')->name('passwords.import');
+
 Route::post('/reset-password', 'ChangePasswordController@sendNewEmail')->name('password.send.new');
 
 
@@ -41,5 +45,11 @@ Route::get('/products', 'ProductController@index')->name('products.index');
 Route::get('/users/create/{role}', 'UserController@createWithRole')->name('users.create.role');
 
 Route::resource('/users', 'UserController');
+Route::post('/users/activate/{id}', 'UserController@activate')->name('users.activate');
+Route::post('/users/desactivate/{id}', 'UserController@desactivate')->name('users.desactivate');
 
 Route::resource('/banners', 'BannerController');
+
+Route::get('/labels/import', 'LabelController@importForm')->name('labels.import.form');
+Route::resource('/labels', 'LabelController');
+Route::post('/labels/import', 'LabelController@import')->name('labels.import');

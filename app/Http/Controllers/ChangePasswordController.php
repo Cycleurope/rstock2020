@@ -8,6 +8,8 @@ use App\Rules\MatchEmailAddress;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\User;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\M3PasswordsImport;
 
 class ChangePasswordController extends Controller
 {
@@ -66,5 +68,17 @@ class ChangePasswordController extends Controller
     public function send()
     {
         return view('password.send');
+    }
+
+    public function importForm()
+    {
+        return view('password.import-file');
+    }
+
+    public function import(Request $request)
+    {
+        ini_set('max_execution_time', 300);
+        Excel::import(new M3PasswordsImport, $request->file('file'));
+        return redirect()->route('users.index');
     }
 }

@@ -29,6 +29,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('family_id')->nullable()->unsigned();
             $table->foreign('family_id')->references('id')->on('product_family')->onDelete('cascade');
             $table->string('type', 8)->default('other');
+            $table->string('label')->nullable();
             $table->timestamps();
         });
     }

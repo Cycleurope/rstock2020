@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 
 class UserController extends Controller
@@ -22,7 +23,7 @@ class UserController extends Controller
     public function index()
     {
         app('debugbar')->disable();
-        $users = User::where('role', 'dealer')->get();   
+        $users = User::where('role', 'dealer')->orderBy('username', 'ASC')->get();   
         return view('users.index', [
             'users' => $users
         ]);  
@@ -129,10 +130,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($username)
     {
-        dd($user);
-        $user = User::where('username', $user)->first();
+        $user = User::where('username', $username)->first();
         return view('users.show', [
             'dealer' => $user
         ]);
@@ -194,6 +194,28 @@ class UserController extends Controller
         return view('admins.index', [
             'users' => $users
         ]);
+    }
+
+    public function activate(Request $request, $id)
+    {
+        $request->validate([
+            'password' => ['required'],
+            'confirm_password' => ['same:password'],
+        ]);
+
+        User::find($id)->update(['password' => Hash::make($request->password), 'active' => 1]);
+        
+        return redirect()->route('users.index')
+            ->with('message', 'Le compte a bien été activé.')
+            ->with('class', 'success');
+    }
+
+    public function desactivate($id)
+    {
+        User::find($id)->update(['active' => 0, 'password' => null]);
+        return redirect()->route('users.index')
+            ->with('message', 'Le compte a bien été desactivé.')
+            ->with('class', 'danger');
     }
 
 }

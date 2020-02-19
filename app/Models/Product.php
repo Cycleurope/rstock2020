@@ -10,7 +10,7 @@ class Product extends Model
 {
     protected $table = 'products';
 
-    protected $fillable = ['mmitno', 'mmitds', 'mmitcl', 'mmitgr', 'mbaval', 'mbstat', 'mbstqt', 'mmspe1', 'mmspe2', 'mmspe3', 'size', 'family_id', 'type'];
+    protected $fillable = ['mmitno', 'mmitds', 'mmitcl', 'mmitgr', 'mbaval', 'mbstat', 'mbstqt', 'mmspe1', 'mmspe2', 'mmspe3', 'size', 'family_id', 'type', 'label'];
 
     public function family()
     {
@@ -60,6 +60,15 @@ class Product extends Model
     public function assortments()
     {
         return $this->hasMany(ProductAssortment::class);
+    }
+
+    public function designation()
+    {   
+        $designation = $this->mmitds;
+        if(($this->label != null) || ($this->label != '')) {
+            $designation = '<span class="font-weight-bold">'.$this->label.'</span>';
+        }
+        return $designation;
     }
 
 

@@ -28,7 +28,7 @@
                             <input type="password" name="password" class="form-control flatcontrol" placeholder="Mot de passe">
                         </div>
                         <button type="submit" class="btn btn-primary flatbutton col-12">Se connecter</button>
-                        <a href="{{ route('password.send') }}" class="fictive">Mot de passe oublié</a>
+                        <a href="{{ route('password.send') }}" class="fictive d-none">Mot de passe oublié</a>
                     </form>
                 </div>
             </div>

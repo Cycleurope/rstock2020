@@ -46,7 +46,6 @@ class UsersImport implements ToCollection, WithHeadingRow, WithStartRow, WithChu
                     'city'          => $OPTOWN,
                     'phone'         => $OPPHNO,
                     'email'         => $OKEMAL,
-                    'password'      => bcrypt('password'),
                     'role'          => 'dealer',
                     //'dep'           => $OKECAR,
                 ]);

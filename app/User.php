@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'address1', 'address2', 'postalcode', 'city', 'phone', 'email', 'role', 'password'
+        'name', 'username', 'address1', 'address2', 'postalcode', 'city', 'phone', 'email', 'role', 'password', 'active'
     ];
 
     /**
@@ -41,6 +41,18 @@ class User extends Authenticatable
     public function assortments()
     {
         return $this->hasMany(UserAssortment::class);
+    }
+
+    public function activebadge()
+    {
+        if($this->active == 1)
+        {
+            $badge = '<span class="badge flatbadge flatbadge-green">Actif</span>';
+        } else {
+            $badge = '<span class="badge flatbadge flatbadge-bloody">Inactif</span>';
+        }
+
+        return $badge;
     }
 
 
