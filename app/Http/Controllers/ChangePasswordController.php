@@ -60,7 +60,7 @@ class ChangePasswordController extends Controller
             $mail->subject('New Password');
         });
 
-        return redirect()->route('dashboard')
+        return redirect()->route('home')
             ->with('message', 'Un nouveau mot de passe a étét envoyé à l\'adresse e-mail que vous avez renseigné.')
             ->with('class', 'success');
     }
