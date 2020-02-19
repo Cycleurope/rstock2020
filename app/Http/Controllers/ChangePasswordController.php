@@ -13,7 +13,7 @@ class ChangePasswordController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['send']]);
+        $this->middleware('auth', ['except' => ['send', 'sendNewEmail']]);
     }
 
     public function index()
@@ -46,8 +46,6 @@ class ChangePasswordController extends Controller
         // $request->validate([
         //     'email' => ['required', new MatchEmailAddress]
         // ]);
-
-        echo "Send New Password";
 
         $data = [
             'name' => 'John Doe',
