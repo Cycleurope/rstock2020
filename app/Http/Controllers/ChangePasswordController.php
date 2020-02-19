@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use App\Rules\MatchEmailAddress;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\User;
 
 class ChangePasswordController extends Controller
@@ -45,6 +46,17 @@ class ChangePasswordController extends Controller
         $request->validate([
             'email' => ['required', new MatchEmailAddress]
         ]);
+
+        $data = [
+            'name' => 'John Doe',
+            'body' => 'body body'
+        ];
+
+        Mail::send('mail.send-new-password', $data, function($mail) {
+            $mail->from('web@cycleurope.fr');
+            $mail->to('vincent.lombard@cycleurope.fr');
+            $mail->subject('New Password');
+        });
 
         return redirect()->route('dashboard')
             ->with('message', 'Un nouveau mot de passe a étét envoyé à l\'adresse e-mail que vous avez renseigné.')
