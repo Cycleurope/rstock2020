@@ -43,9 +43,9 @@ class ChangePasswordController extends Controller
 
     public function sendNewEmail(Request $request)
     {
-        $request->validate([
-            'email' => ['required', new MatchEmailAddress]
-        ]);
+        // $request->validate([
+        //     'email' => ['required', new MatchEmailAddress]
+        // ]);
 
         $data = [
             'name' => 'John Doe',
