@@ -44,6 +44,7 @@ Route::get('/products', 'ProductController@index')->name('products.index');
 
 Route::get('/users/create/{role}', 'UserController@createWithRole')->name('users.create.role');
 
+Route::get('/users/outdated', 'UserController@outdated')->name('users.outdated');
 Route::resource('/users', 'UserController');
 Route::post('/users/activate/{id}', 'UserController@activate')->name('users.activate');
 Route::post('/users/desactivate/{id}', 'UserController@desactivate')->name('users.desactivate');
