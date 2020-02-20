@@ -9,7 +9,15 @@
                 <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link">Tableau de bord</a></li>
                 @can('isAdmin')
                 <li class="nav-item"><a href="{{ route('labels.index') }}" class="nav-link">Labels</a></li>
-                <li class="nav-item"><a href="{{ route('users.index') }}" class="nav-link">Comptes Clients</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Comptes Clients
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{{ route('users.index') }}"><i class="fa fa-users mr-2"></i>Tous les comptes</a>
+                      <a class="dropdown-item" href="{{ route('users.outdated') }}"><i class="fa fa-user-plus mr-2"></i>Assortiments non-valides</a>
+                    </div>
+                </li>
                 @endcan
                 <li class="nav-item"><a href="{{ route('products.index') }}" class="nav-link">Rechercher</a></li>
             </ul>
