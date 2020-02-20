@@ -33,12 +33,8 @@ class AuthServiceProvider extends ServiceProvider
             return $user->role == 'dealer';
         });
 
-        Gate::define('isBank', function($user) {
-            return $user->role == 'bank';
-        });
-
-        Gate::define('isGuest', function($user) {
-            return $user->role == 'guest';
+        Gate::define('isSales', function($user) {
+            return $user->role == 'sales';
         });
         
     }

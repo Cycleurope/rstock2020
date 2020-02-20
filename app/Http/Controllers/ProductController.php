@@ -29,18 +29,20 @@ class ProductController extends Controller
             })->whereRaw('LENGTH(mmitno) > 6')
             ->get();
 
-            return view('products.index', [
-                'products' => $products
-            ]);
+            return view('products.index', ['products' => $products]);
+
+        } elseif($role == "sales") {
+
+            $products = Product::whereIn('type', ['bike', 'frame'])->get();
+
+            return view('products.index-sales', ['products' => $products]);
 
         } else {
 
             $products = Product::whereIn('type', ['bike', 'frame'])->get();
 
-            return view('products.index-admin', [
-                'products' => $products
-            ]);
-
+            return view('products.index-admin', ['products' => $products]);
+            
         }
 
     }

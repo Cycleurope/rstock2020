@@ -6,6 +6,8 @@
         @include('dashboard.admin')
     @elseif(Auth::user()->role == 'dealer')
         @include('dashboard.dealer')
+    @elseif(Auth::user()->role == 'sales')
+        @include('dashboard.sales')
     @endif
 </div>
 @endsection

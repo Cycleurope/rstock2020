@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1><span>Dashboard Administrateur</span></h1>
+                    <h1><span>Tableau de bord Administrateur</span></h1>
                 </div>
                 <div class="col-12">
                     <a href="{{ route('export.stock') }}" class="btn flatbutton">Exporter tout le stock</a>
