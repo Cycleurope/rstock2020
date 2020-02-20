@@ -3,11 +3,11 @@
 <div id="app" class="py-5">
     @include('partials/notifications-panel')
     @if(Auth::user()->role == 'admin')
-        @include('profile.admin')
+        @include('users.profile.admin')
     @elseif(Auth::user()->role == 'dealer')
-        @include('profile.dealer')
+        @include('users.profile.dealer')
     @elseif(Auth::user()->role == 'sales')
-        @include('profile.sales')
+        @include('users.profile.sales')
     @endif
 </div>
 @endsection
