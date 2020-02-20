@@ -220,7 +220,7 @@ class UserController extends Controller
 
     public function outdatedAssortments()
     {
-        $users = Users::whereHas('assortments', function($q) {
+        $users = User::whereHas('assortments', function($q) {
             $q->where('octdat', '<=', date('Ymd'));
         })->get();
 
