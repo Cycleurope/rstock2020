@@ -20,8 +20,8 @@ class M3PasswordsImport implements ToCollection, WithHeadingRow, WithStartRow, W
         foreach($collection as $row)
         {
 
-            $username = $row['username'];
-            $password = $row['pin'];
+            $username = trim($row['username']);
+            $password = trim($row['pin']);
 
             if(User::where('username', $username)->exists()) {
                 $user = User::where('username', $username)->first();
