@@ -218,4 +218,9 @@ class UserController extends Controller
             ->with('class', 'danger');
     }
 
+    public function outdatedAssortments()
+    {
+        
+    }
+
 }
