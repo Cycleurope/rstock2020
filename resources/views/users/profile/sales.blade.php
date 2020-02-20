@@ -26,26 +26,6 @@
                             <td>{{ Auth::user()->name }}</td>
                         </tr>
                         <tr>
-                            <td><span class="font-weight-bold">Adresse - Ligne 1</span></td>
-                            <td>{{ Auth::user()->address1 }}</td>
-                        </tr>
-                        <tr>
-                            <td><span class="font-weight-bold">Adresse - Ligne 2</span></td>
-                            <td>{{ Auth::user()->address2 }}</td>
-                        </tr>
-                        <tr>
-                            <td><span class="font-weight-bold">Code Postal</span></td>
-                            <td>{{ Auth::user()->postalcode }}</td>
-                        </tr>
-                        <tr>
-                            <td><span class="font-weight-bold">Ville</span></td>
-                            <td>{{ Auth::user()->city }}</td>
-                        </tr>
-                        <tr>
-                            <td><span class="font-weight-bold">Téléphone</span></td>
-                            <td>{{ Auth::user()->phone }}</td>
-                        </tr>
-                        <tr>
                             <td><span class="font-weight-bold">E-mail</span></td>
                             <td>{{ Auth::user()->email }}</td>
                         </tr>
