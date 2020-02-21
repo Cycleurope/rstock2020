@@ -55,5 +55,17 @@ class User extends Authenticatable
         return $badge;
     }
 
+    public function hasM3Pin()
+    {
+        $m3pinbadge = "";
+        if($this->m3pin == 1) {
+            $m3pinbadge = '<span class="badge badge-success">Oui</span>';
+        } else {
+            $m3pinbadge = '<span class="badge badge-info">PIN Perso</span>';
+        }
+
+        return $m3pinbadge;
+    }
+
 
 }

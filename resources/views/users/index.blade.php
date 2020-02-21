@@ -21,6 +21,7 @@
                                 <th>Ville</th>
                                 <th>Assortiments</th>
                                 <th>Rep</th>
+                                <th>M3Pin</th>
                                 <th>Last Update</th>
                                 <th>&nbsp;</th>
                             </tr>
@@ -39,6 +40,7 @@
                             @endforeach
                         </td>
                         <td>{{ $user->resp }}</td>
+                        <td>{!! $user->hasM3Pin !! }}</td>
                         <td>{{ $user->updated_at }}</td>
                         <td><a href="{{ route('users.show', $user->username) }}" class="">Consulter</a></td>
                     </tr>
