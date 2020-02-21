@@ -40,7 +40,7 @@
                             @endforeach
                         </td>
                         <td>{{ $user->resp }}</td>
-                        <td>{!! $user->hasM3Pin !! }}</td>
+                        <td>{!! $user->hasM3Pin() !! }}</td>
                         <td>{{ $user->updated_at }}</td>
                         <td><a href="{{ route('users.show', $user->username) }}" class="">Consulter</a></td>
                     </tr>
