@@ -33,6 +33,7 @@ class UsersImport implements ToCollection, WithHeadingRow, WithStartRow, WithChu
             $OCTDAT = $row['octdat'];
             $OKSTAT = intval($row['okstat']);
             $OPADID = $row["opadid"];
+            $OKSMCD = trim($row['oksmcd']);
 
             if($OKEMAL != "" && ($OKSTAT == 20) && ($OPADID == "")) {
                 $user = User::firstOrCreate([
@@ -47,6 +48,7 @@ class UsersImport implements ToCollection, WithHeadingRow, WithStartRow, WithChu
                     'phone'         => $OPPHNO,
                     'email'         => $OKEMAL,
                     'role'          => 'dealer',
+                    'resp'          => $OKSMCD,
                     //'dep'           => $OKECAR,
                 ]);
 
