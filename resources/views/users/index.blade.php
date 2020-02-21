@@ -20,6 +20,7 @@
                                 <th>CP</th>
                                 <th>Ville</th>
                                 <th>Assortiments</th>
+                                <th>Rep</th>
                                 <th>&nbsp;</th>
                             </tr>
                         </thead>
@@ -36,6 +37,7 @@
                             {!! $a->assortmentBadge() !!}
                             @endforeach
                         </td>
+                        <td>{{ $user->resp }}</td>
                         <td><a href="{{ route('users.show', $user->username) }}" class="">Consulter</a></td>
                     </tr>
                     @endforeach
