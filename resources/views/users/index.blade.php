@@ -21,6 +21,7 @@
                                 <th>Ville</th>
                                 <th>Assortiments</th>
                                 <th>Rep</th>
+                                <th>Last Update</th>
                                 <th>&nbsp;</th>
                             </tr>
                         </thead>
@@ -38,6 +39,7 @@
                             @endforeach
                         </td>
                         <td>{{ $user->resp }}</td>
+                        <td>{{ $user->updated_at }}</td>
                         <td><a href="{{ route('users.show', $user->username) }}" class="">Consulter</a></td>
                     </tr>
                     @endforeach
