@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->string('role');
+            $table->string('m3pin')->default(0);
             $table->boolean('active')->default(0);
             $table->timestamps();
         });

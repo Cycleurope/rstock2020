@@ -27,6 +27,7 @@ class M3PasswordsImport implements ToCollection, WithHeadingRow, WithStartRow, W
                 $user = User::where('username', $username)->first();
                 $user->password = bcrypt($password);
                 $user->active = true;
+                $user->m3pin = 1;
                 $user->save();
             };
 
