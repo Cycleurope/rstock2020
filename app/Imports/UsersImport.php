@@ -36,7 +36,7 @@ class UsersImport implements ToCollection, WithHeadingRow, WithStartRow, WithChu
             $OKSMCD = trim($row['oksmcd']);
 
             if($OKEMAL != "" && ($OKSTAT == 20) && ($OPADID == "")) {
-                $user = User::firstOrCreate([
+                $user = User::updateOrCreate([
                     'email'      => $OKEMAL,
                 ], [
                     'username'      => $OPCUNO,
