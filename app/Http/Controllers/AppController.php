@@ -11,6 +11,7 @@ use App\Models\UserAssortment;
 use App\Exports\DealersByAssortmentExport;
 use App\Exports\StockExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Events\DealersUpdatedEvent;
 
 class AppController extends Controller
 {
@@ -21,6 +22,7 @@ class AppController extends Controller
     }
 
     public function dashboard() {
+        broadcast(new DealersUpdatedEvent);
         $dealers = User::where('role', 'dealer')->paginate(20);
         $banners = Banner::all();
 

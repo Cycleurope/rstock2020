@@ -39,5 +39,9 @@
   "bugs": {
     "url": "https://github.com/Cycleurope/rstock2020/issues"
   },
-  "homepage": "https://github.com/Cycleurope/rstock2020#readme"
+  "homepage": "https://github.com/Cycleurope/rstock2020#readme",
+  "dependencies": {
+    "laravel-echo": "^1.6.1",
+    "socket.io-client": "^2.3.0"
+  }
 }
