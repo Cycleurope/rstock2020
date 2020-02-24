@@ -15,19 +15,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SerialRegistered' => [
-            'App\Listeners\UploadRegistrationFile'
+        'Illuminate\Auth\Events\Login' => [
+            'App\Listeners\LogSuccessfulLogin'
         ],
-        'App\Events\ReleaseRegistered' => [
-            'App\Listeners\CreateProcedure'
-        ],
-        'App\Events\OverhaulRegistered' => [
-            'App\Listeners\UploadOverhaulFile'
-        ],
-        'App\Events\OverhaulFileUploaded' => [
-            'App\Listeners\CreateOverhaulProcedure'
-        ],
-
     ];
 
     /**

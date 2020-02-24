@@ -229,4 +229,12 @@ class UserController extends Controller
         ]);  
     }
 
+    public function lastLogins()
+    {
+        $users = User::where('last_login_at', '!=', null)->orderBy('last_login_at', 'DESC')->limit(30)->get();
+        return view('users.last-logins', [
+            'users' => $users
+        ]);
+    }
+
 }
