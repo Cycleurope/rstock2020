@@ -29,13 +29,18 @@ class LogSuccessfulLogin
     public function handle(Login $event)
     {
         $user = $event->user;
-        $user->last_login_at = date('Y-m-d H:i:s');
-        $user->save();
 
-        $login = UserLogin::create([
-            'user_id' => $user->id,
-            'logged_at' => date('Y-m-d H:i:s')
-        ]);
+        if($user->role != "admin") {
+
+            $user->last_login_at = date('Y-m-d H:i:s');
+            $user->save();
+
+            $login = UserLogin::create([
+                'user_id' => $user->id,
+                'logged_at' => date('Y-m-d H:i:s')
+            ]);
+            
+        }
 
     }
 }
