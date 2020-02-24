@@ -9,6 +9,13 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <a href="{{ route('export.stock') }}" class="btn btn-purple">Exporter tout le stock</a>
+                </div>
+            </div>
+        </div>
         <div class="col-12 mb-5">
             @foreach($banners as $banner)
             <div class="flatnotification py-4 mb-2">
