@@ -125,6 +125,19 @@
                         <a href="{{ route('banners.index') }}"><i class="mdi mdi-view-dashboard"></i>Billboards</a>
                     </li>
 
+                    <li class="has-submenu">
+                        <a href="#"> <i class="mdi mdi-invert-colors"></i>Statistiques  <div class="arrow-down"></div></a>
+                        <ul class="submenu megamenu">
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('stats.logins.index') }}">Historiques de connexions</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
                     @endcan
 
                     <li class="has-submenu">

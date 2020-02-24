@@ -55,3 +55,5 @@ Route::resource('/banners', 'BannerController');
 Route::get('/labels/import', 'LabelController@importForm')->name('labels.import.form');
 Route::resource('/labels', 'LabelController');
 Route::post('/labels/import', 'LabelController@import')->name('labels.import');
+
+Route::get('/stats/logins', 'UserLoginController@index')->name('stats.logins.index');
