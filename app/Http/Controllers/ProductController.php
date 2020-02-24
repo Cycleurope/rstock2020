@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-
+        app('debugbar')->disable();
         $role = auth()->user()->role;
 
         if($role == 'dealer') {

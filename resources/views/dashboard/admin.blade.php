@@ -1,19 +1,24 @@
 @extends('layouts.app')
 @section('content')
-<div id="app" class="py-5">
     @include('partials/notifications-panel')
-    <div id="content-panel" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1><span>Tableau de bord Administrateur</span></h1>
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h1 class="page-title">Comptes Clients</h1>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <a href="{{ route('export.stock') }}" class="btn btn-purple">Exporter tout le stock</a>
+                    <a href="{{ route('export.dealers') }}" class="btn btn-purple">Exporter la liste des comptes</a>
                 </div>
-                <div class="col-12">
-                    <a href="{{ route('export.stock') }}" class="btn flatbutton">Exporter tout le stock</a>
-                    <a href="{{ route('export.dealers') }}" class="btn flatbutton">Exporter la liste des comptes</a>
-                </div>
-                <div class="col-12">
-                    <h2>Assortiments Utilisateurs</h2>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Assortiments Utilisateurs</h5>
                     <ul class="list-group list-group-flush">
                         @foreach($users_assortments as $ua)
                         <li class="list-group-item d-flex justify-content-between align-items-center"><span>
@@ -29,5 +34,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

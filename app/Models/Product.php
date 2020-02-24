@@ -21,16 +21,16 @@ class Product extends Model
     {
         switch($this->mbstat):
             case 20:
-                $badge = '<div class="flatbadge flatbadge-green">'.$this->mbstat.' - Ouvert</div/>';
+                $badge = '<div class="badge badge-success">'.$this->mbstat.' - Ouvert</div/>';
             break;
             case 50:
-                $badge = '<div class="flatbadge bg-warning">'.$this->mbstat.' - Bientôt épuisé</div/>';
+                $badge = '<div class="badge badge-warning text-dark">'.$this->mbstat.' - Quantité Limitée</div/>';
             break;
             case 80:
-                $badge = '<div class="flatbadge bg-danger text-light">'.$this->mbstat.' - Fermé</div/>';
+                $badge = '<div class="badge badge-danger">'.$this->mbstat.' - Fermé</div/>';
             break;
             default:
-                $badge = '<div class="flatbadge">'.$this->mbstat.' -  ??? </div/>';
+                $badge = '<div class="badge">'.$this->mbstat.' -  ??? </div/>';
 
         endswitch;
 
@@ -41,16 +41,16 @@ class Product extends Model
     {
         switch($this->mbstat):
             case 20:
-                $badge = '<div class="flatbadge flatbadge-green">Disponible</div/>';
+                $badge = '<div class="badge badge-success">Disponible</div/>';
             break;
             case 50:
-                $badge = '<div class="flatbadge bg-warning">Bientôt épuisé</div/>';
+                $badge = '<div class="badge badge-warning text-dark">Quantité Limitée</div/>';
             break;
             case 80:
-                $badge = '<div class="flatbadge bg-danger text-light">Indisponible</div/>';
+                $badge = '<div class="badge badge-danger">Indisponible</div/>';
             break;
             default:
-                $badge = '<div class="flatbadge">???</div/>';
+                $badge = '<div class="badge">???</div/>';
 
         endswitch;
 

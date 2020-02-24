@@ -47,9 +47,9 @@ class User extends Authenticatable
     {
         if($this->active == 1)
         {
-            $badge = '<span class="badge flatbadge flatbadge-green">Actif</span>';
+            $badge = '<span class="badge badge-success">ACTIF</span>';
         } else {
-            $badge = '<span class="badge flatbadge flatbadge-bloody">Inactif</span>';
+            $badge = '<span class="badge badge-purple">INACTIF</span>';
         }
 
         return $badge;

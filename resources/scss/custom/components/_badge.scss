@@ -1,0 +1,13 @@
+// 
+// badge.scss
+//
+
+.badge {
+    color: $white;
+    padding: 0.5em 1em !important;
+    border-radius: 0.1em !important;
+}
+
+.badge-light {
+    color: $gray-800;
+}

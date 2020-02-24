@@ -1,23 +1,22 @@
 @extends('layouts.app')
 @section('content')
-<div id="app" class="py-5">
     @include('partials/notifications-panel')
-    <div id="content-panel" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h1><span>Billboard</span></h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <a href="{{ route('banners.create') }}" class="btn btn-sm flatbutton mb-5">Nouveau billboard</a>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col">
+            <h1><span>Billboards</span></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ route('banners.create') }}" class="btn btn-sm btn-purple mb-2">Nouveau billboard</a>
+        </div>
+    </div>
 
-            <div class="row">
-                <div class="col-12">
-                    @if(count($banners) > 0)
+    <div class="row">
+        <div class="col-12">
+            @if(count($banners) > 0)
+            <div class="card">
+                <div class="card-body">
                     <table class="table table-sm">
                         <thead>
                             <tr>
@@ -49,19 +48,17 @@
                                                 <input type="submit" class="dropdown-item text-danger btn" value="Delete" onclick="return confirm('Voulez-vous réellement supprimer ce billboard ?')"/>
                                             </form>
                                         </div>
-                                  </div>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    @else
-                    <div class="flatnotification">Auun billboard.</div>
-                    @endif
                 </div>
             </div>
-
+            @else
+            <div class="alert alert-primary">Aucun billboard.</div>
+            @endif
         </div>
     </div>
-</div>
 @endsection

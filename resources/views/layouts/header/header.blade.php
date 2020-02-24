@@ -1,54 +1,151 @@
-<header>
-    <nav class="navbar navbar-expand-lg">
-        <a href="{{ route('home') }}" class="navbar-brand">R-Stock 2020</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link">Tableau de bord</a></li>
-                @can('isAdmin')
-                <li class="nav-item"><a href="{{ route('labels.index') }}" class="nav-link">Labels</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Comptes Clients
+<header id="topnav">
+
+    <!-- Topbar Start -->
+    <div class="navbar-custom">
+        <div class="container-fluid">
+            <ul class="list-unstyled topnav-menu float-right mb-0">
+
+                <li class="dropdown notification-list">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle nav-link">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{{ route('users.index') }}"><i class="fa fa-users mr-2"></i>Tous les comptes</a>
-                      <a class="dropdown-item" href="{{ route('users.outdated') }}"><i class="fa fa-user-plus mr-2"></i>Assortiments non-valides</a>
-                    </div>
+                    <!-- End mobile menu toggle-->
                 </li>
-                @endcan
-                <li class="nav-item"><a href="{{ route('products.index') }}" class="nav-link">Rechercher</a></li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                @can('isAdmin')
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Administration
+
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <span class="pro-user-name ml-1">
+                            {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i> 
+                        </span>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{{ route('users.admins') }}"><i class="fa fa-users mr-2"></i>Comptes Administrateur</a>
-                      <a class="dropdown-item" href="{{ route('users.create', ['role' => 'admin']) }}"><i class="fa fa-user-plus mr-2"></i>Nouveau compte</a>
-                    </div>
-                </li>
-                @endcan
-                <li class="nav-item dropdown dropdown-menu-right">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      {{ Auth::user()->name }}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{{ route('profile') }}"><i class="fa fa-user mr-2"></i>Mon profil</a>
-                      <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-power-off mr-2"></i>Se déconnecter</a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                        <!-- item-->
+                        <div class="dropdown-header noti-title">
+                            <h6 class="text-overflow m-0">Bienvenue !</h6>
+                        </div>
+
+                        <!-- item-->
+                        <a href="{{ route('profile') }}" class="dropdown-item notify-item">
+                            <i class="fe-user"></i>
+                            <span>Mon compte</span>
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <a class="dropdown-item" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            <i class="fe-log-out"></i>
+                            <span>Se déconnecter</span>
+                        </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
+                            @csrf
                         </form>
+
                     </div>
                 </li>
+
+                <li class="dropdown notification-list">
+                    <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect">
+                        <i class="fe-settings noti-icon"></i>
+                    </a>
+                </li>
+
             </ul>
+
+            <!-- LOGO -->
+            <div class="logo-box">
+                <a href="index.html" class="logo text-center">
+                    <span class="logo-lg">
+                        <img src="{{ asset("adminto/assets/images/logo-light.png") }}" alt="" height="16">
+                        <!-- <span class="logo-lg-text-light">UBold</span> -->
+                    </span>
+                    <span class="logo-sm">
+                        <!-- <span class="logo-sm-text-dark">U</span> -->
+                        <img src="assets/images/logo-sm.png" alt="" height="24">
+                    </span>
+                </a>
+            </div>
+
+        </div> <!-- end container-fluid-->
+    </div>
+    <!-- end Topbar -->
+
+    <div class="topbar-menu">
+        <div class="container-fluid">
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu">
+
+                    <li class="has-submenu">
+                        <a href="{{ route('dashboard') }}"><i class="mdi mdi-view-dashboard"></i>Dashboard</a>
+                    </li>
+
+                    @can('isAdmin')
+
+
+                    <li class="has-submenu">
+                        <a href="#"> <i class="mdi mdi-invert-colors"></i>Comptes Clients  <div class="arrow-down"></div></a>
+                        <ul class="submenu megamenu">
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('users.index') }}">Tous les comptes</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('users.outdated') }}">Assortiments non-valides</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('users.index') }}">Importer des mots de passe M3</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="#"><i class="mdi mdi-view-dashboard"></i>Labels</a>
+                        <ul class="submenu megamenu">
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('labels.index') }}">Tous les labels</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('labels.import.form') }}">Importer</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="{{ route('banners.index') }}"><i class="mdi mdi-view-dashboard"></i>Billboards</a>
+                    </li>
+
+                    @endcan
+
+                    <li class="has-submenu">
+                        <a href="{{ route('products.index') }}"><i class="mdi mdi-view-dashboard"></i>Rechercher</a>
+                    </li>
+
+                </ul>
+                <!-- End navigation menu -->
+
+                <div class="clearfix"></div>
+            </div>
+            <!-- end #navigation -->
         </div>
-    </nav>
+        <!-- end container -->
+    </div>
+    <!-- end navbar-custom -->
+
 </header>
