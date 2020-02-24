@@ -57,3 +57,4 @@ Route::resource('/labels', 'LabelController');
 Route::post('/labels/import', 'LabelController@import')->name('labels.import');
 
 Route::get('/stats/logins', 'UserLoginController@index')->name('stats.logins.index');
+Route::get('/stats/logins/most-active', 'UserLoginController@mostActiveUsers')->name('stats.logins.most-active');
