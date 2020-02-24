@@ -12,7 +12,7 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <table class="table table-sm" id="dealers-table">
+                            <table class="table table-sm" id="last-logins-table">
                                 <thead>
                                     <tr>
                                         <th>Statut</th>
