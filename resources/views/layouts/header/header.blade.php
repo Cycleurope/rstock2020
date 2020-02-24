@@ -133,6 +133,9 @@
                                     <li>
                                         <a href="{{ route('stats.logins.index') }}">Historiques de connexions</a>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('stats.logins.most-active') }}">Utilisateurs les plus actifs</a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
