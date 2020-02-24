@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Login as UserLogin;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -30,5 +31,11 @@ class LogSuccessfulLogin
         $user = $event->user;
         $user->last_login_at = date('Y-m-d H:i:s');
         $user->save();
+
+        $login = UserLogin::create([
+            'user_id' => $user->id,
+            'logged_at' => date('Y-m-d H:i:s')
+        ]);
+
     }
 }
