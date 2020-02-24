@@ -16,7 +16,7 @@ class StockExport implements FromCollection, WithHeadings, ShouldAutoSize, WithM
     */
     public function collection()
     {
-        return Product::whereIn('type', ['bike', 'frame'])->get();
+        return Product::whereIn('type', ['bike', 'frame'])->where('mbaval', '>', 0)->get();
     }
 
     public function map($product): array
