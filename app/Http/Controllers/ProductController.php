@@ -34,7 +34,7 @@ class ProductController extends Controller
 
         } elseif($role == "sales") {
 
-            $products = Product::whereIn('type', ['bike', 'frame'])->get();
+            $products = Product::whereIn('type', ['bike', 'frame'])->where('mbaval', '>', 0)->get();
 
             return view('products.index-sales', ['products' => $products]);
 
