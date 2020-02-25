@@ -25,7 +25,7 @@
                     </thead>
                     <tbody>
                     @foreach($logins as $log)
-                    @if($log->user->role == "admin")
+                    @if($log->user->role == "sales")
                     <tr class="table-pink">
                     @else
                     <tr>
