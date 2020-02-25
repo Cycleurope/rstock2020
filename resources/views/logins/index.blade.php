@@ -15,6 +15,7 @@
                     <thead>
                         <tr>
                             <th>Identifiant</th>
+                            <th>Role</th>
                             <th>Nom</th>
                             <th>CP</th>
                             <th>Ville</th>
@@ -26,6 +27,7 @@
                     @foreach($logins as $log)
                     <tr>
                         <td>{{ $log->user->username }}</td>
+                        <td>{!! $log->user->friendlyRole() !!}</td>
                         <td>{{ $log->user->name }}</td>
                         <td>{{ $log->user->postalcode }}</td>
                         <td>{{ $log->user->city }}</td>

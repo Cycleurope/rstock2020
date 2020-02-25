@@ -67,5 +67,24 @@ class User extends Authenticatable
         return $m3pinbadge;
     }
 
+    public function friendlyRole()
+    {
+        switch($this->role):
+            case 'admin':
+                $role_badge = '<span class="badge badge-purple">Administrateur</span>';
+            break;
+            case 'sales':
+                $role_badge = '<span class="badge badge-pink">Commercial</span>';
+            break;
+            case 'dealer':
+                $role_badge = '<span class="badge badge-info">Client</span>';
+            break;
+            default:
+                $role_badge = '<span class="badge badge-light">Indéfini</span>';
+        endswitch;
+
+        return $role_badge;
+    }
+
 
 }

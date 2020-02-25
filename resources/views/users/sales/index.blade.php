@@ -37,7 +37,7 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="{{ route('users.sales.edit', $s) }}">Editer</a>
                                             <div class="dropdown-divider"></div>
-                                            <form action="{{ route('users.destroy', $s) }}" method="POST">
+                                            <form action="{{ route('users.destroy', $s->id) }}" method="POST">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
                                                 <input type="submit" value="Supprimer" class="dropdown-item btn text-danger">

@@ -137,17 +137,18 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
         switch($user->role):
+            case 'sales':
+                return redirect()->route('users.sales')
+                    ->with('message', 'Le compte commercial a été supprimé.')
+                    ->with('class', 'danger');
+            break;
             case 'admin':
-                return redirect()->route('users.admins')->with('success', 'Le compte administrateur a été supprimé.');
-            break;
-            case 'bank':
-                return redirect()->route('users.monitors')->with('success', 'Le compte moniteur a été supprimé.');;
-            break;
-            case 'guest':
-                return redirect()->route('users.guests')->with('success', 'Le compte visiteur a été supprimé.');;
+                return redirect()->route('users.admins')
+                ->with('message', 'Le compte administrateur a été supprimé.')
+                ->with('class', 'danger');
             break;
             default:
-                return redirect()->route('users.index')->with('success', 'Le compte a été supprimé.');;
+                return redirect()->route('users.index')->with('success', 'Le compte a été supprimé.');
         endswitch;
     }
 
