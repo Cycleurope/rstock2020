@@ -20,6 +20,7 @@ class UserLoginController extends Controller
     {
         $logins = UserLogin::groupBy('user_id')
             ->selectRaw('count(*) as total, user_id')
+            ->orderBy('total', 'desc')
             ->get();
 
         return view('logins.most-active', [
