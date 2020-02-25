@@ -25,7 +25,11 @@
                     </thead>
                     <tbody>
                     @foreach($logins as $log)
+                    @if($log->user->role == "admin")
+                    <tr class="table-pink">
+                    @else
                     <tr>
+                    @endif
                         <td>{{ $log->user->username }}</td>
                         <td>{{ $log->user->name }}</td>
                         <td>{{ $log->user->postalcode }}</td>
