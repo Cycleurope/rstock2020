@@ -20,6 +20,9 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
+                        <div class="alert alert-info">
+                            <span class="font-weight-bold">Attention : </span>Le mot de passe utilisé sur cette application est indépendant et n'a aucune correspondance avec les autres mots de passe utilisés sur les autres applications de Cycleurope.
+                        </div>
                         <div class="form-group">
                             <label for="">Mot de passe actuel</label>
                             <input type="password"  name="current_password" class="form-control flatcontrol" autocomplete="current-password">

@@ -35,14 +35,18 @@ Route::post('/reset-password', 'ChangePasswordController@sendNewEmail')->name('p
 
 
 Route::get('/users/admins', 'UserController@admins')->name('users.admins');
-Route::get('/users/monitors', 'UserController@monitors')->name('users.monitors');
-Route::get('/users/guests', 'UserController@guests')->name('users.guests');
-Route::get('/users/dealers', 'UserController@dealers')->name('users.dealers');
 
 Route::get('/products', 'ProductController@index')->name('products.index');
 
 
 Route::get('/users/create/{role}', 'UserController@createWithRole')->name('users.create.role');
+
+Route::get('/users/sales', 'UserController@sales')->name('users.sales');
+Route::get('/users/sales/create', 'UserController@createSales')->name('users.sales.create');
+Route::get('/users/sales/{id}/edit', 'UserController@editSales')->name('users.sales.edit');
+
+Route::get('/users/admins', 'UserController@admins')->name('users.admins');
+Route::get('/users/admins/create', 'UserController@createAdmin')->name('users.admins.create');
 
 Route::get('/users/outdated', 'UserController@outdatedAssortments')->name('users.outdated');
 Route::get('/users/last-logins', 'UserController@lastLogins')->name('users.logins.last');

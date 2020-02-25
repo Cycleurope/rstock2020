@@ -141,6 +141,32 @@
                         </ul>
                     </li>
 
+                    <li class="has-submenu">
+                        <a href="#"> <i class="mdi mdi-invert-colors"></i>Utilisateurs <div class="arrow-down"></div></a>
+                        <ul class="submenu megamenu">
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('users.sales') }}">Tous les comptes commerciaux</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('users.sales.create') }}">Nouveau compte commercial</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('users.admins') }}">Tous les comptes administrateur</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('users.admins.create') }}">Nouveau compte administrateur</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
                     @endcan
 
                     <li class="has-submenu">

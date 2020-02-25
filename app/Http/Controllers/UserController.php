@@ -60,68 +60,19 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        if (in_array($request->role, static::$rolesArray)) {
+        User::create([
+            'username' => $request->username,
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+            'password' => bcrypt($request->password),
+            'active' => 1
+        ]);
 
-            if($request->role == 'dealer') {
-                $user = User::create([
-                    'username'      => $request->username,
-                    'email'         => $request->email,
-                    'name'          => '',
-                    'password'      => bcrypt($request->password),
-                    'role'          => $request->role,
-                    'name'          => $request->name,
-                    'address1'      => $request->address,
-                    'postalcode'    => $request->postalcode,
-                    'city'          => $request->city,
-                    'phone'         => $request->phone
-                ]);
-            } else {
-                $user = User::create([
-                    'username'          => $request->username,
-                    'email'             => $request->email,
-                    'name'              => '',
-                    'password'          => bcrypt($request->password),
-                    'role'              => $request->role
-                ]);
-            }
+        return redirect()->route('users.sales')
+            ->with('message', 'Le compte a bien été crée.')
+            ->with('class', 'success');
 
-            switch($request->role):
-                case 'admin':
-                    return redirect()->route('users.admins')->with('success', 'Le compte administrateur a été crée avec succes.');
-                break;
-                case 'bank':
-                    return redirect()->route('users.monitors')->with('success', 'Le compte moniteur a été crée avec succes.');;
-                break;
-                case 'guest':
-                    return redirect()->route('users.guests')->with('success', 'Le compte visiteur a été crée avec succes.');;
-                break;
-                case 'dealer':
-                    return redirect()->route('users.guests')->with('success', 'Le compte Expert Mobilité a été crée avec succes.');;
-                break;
-                default:
-                    return redirect()->route('users.index')->with('success', 'Le compte a été crée avec succes.');;
-            endswitch;
-
-        } else {
-
-            switch($request->role):
-                case 'admin':
-                    return redirect()->route('users.admins')->with('error', 'Il y a des erreurs dans le formulaire.');;
-                break;
-                case 'bank':
-                    return redirect()->route('users.monitors')->with('error', 'Il y a des erreurs dans le formulaire.');;;
-                break;
-                case 'guest':
-                    return redirect()->route('users.guests')->with('error', 'Il y a des erreurs dans le formulaire.');;;
-                break;
-                case 'dealer':
-                    return redirect()->route('users.guests')->with('error', 'Il y a des erreurs dans le formulaire.');;;
-                break;
-                default:
-                    return redirect()->route('users.index')->with('error', 'Il y a des erreurs dans le formulaire.');;;
-            endswitch;
-
-        }
     }
 
     /**
@@ -158,7 +109,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $message = "Le compte a été mis à jour.";
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        if($request->password != '') {
+            $message = "Le compte a été mis à jour et un nouveau mot de passe a été renseigné.";
+            $user->password = bcrypt($request->password);
+        }
+        $user->save();
+        return redirect()->route('users.sales')
+            ->with('class', 'info')
+            ->with('message', $message);
     }
 
     /**
@@ -186,14 +149,6 @@ class UserController extends Controller
             default:
                 return redirect()->route('users.index')->with('success', 'Le compte a été supprimé.');;
         endswitch;
-    }
-
-    public function admins()
-    {
-        $users = User::where('role', 'admin')->get();
-        return view('admins.index', [
-            'users' => $users
-        ]);
     }
 
     public function activate(Request $request, $id)
@@ -235,6 +190,40 @@ class UserController extends Controller
         return view('users.last-logins', [
             'users' => $users
         ]);
+    }
+
+    public function sales()
+    {
+        $sales = User::where('role', 'sales')->orderBy('id', 'desc')->get();
+        return view('users.sales.index', [
+            'sales' => $sales
+        ]);
+    }
+
+    public function createSales()
+    {
+        return view('users.sales.create');
+    }
+
+    public function editSales($id)
+    {
+        $user = User::find($id);
+        return view('users.sales.edit', [
+            'user' => $user
+        ]);
+    }
+
+    public function admins()
+    {   
+        $admins = User::where('role', 'admin')->orderBy('id', 'desc')->get();
+        return view('users.admin.index', [
+            'admins' => $admins
+        ]);
+    }
+
+    public function createAdmin()
+    {
+        return view('users/admin.create');
     }
 
 }

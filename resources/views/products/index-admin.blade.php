@@ -11,6 +11,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
+                        <div class="alert alert-info">
+                            <span class="">
+                            Recherchez des articles en utilisant les références ou grâce aux mots-clés.
+                            </span>
+                        </div>
                         <div class="table-responsive">
                             <table id="dealers-table" class="table table-sm table-hover">
                                 <thead>
