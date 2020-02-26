@@ -51,7 +51,7 @@ class ProductController extends Controller
     public function anomalies()
     {
         $products = product::where('mbaval', '>', 0)->where('mbstat', 80)->get();
-        return view('products.anomaies', [
+        return view('products.anomalies', [
             'products' => $products
         ]);
     }
