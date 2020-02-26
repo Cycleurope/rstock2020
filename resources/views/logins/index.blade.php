@@ -32,7 +32,7 @@
                         <td>{{ $log->user->postalcode }}</td>
                         <td>{{ $log->user->city }}</td>
                         <td>{{ $log->user->resp }}</td>
-                        <td>{{ $log->logged_at }}</td>
+                        <td>{{ date('d/m/Y à H:i:s', strtotime($log->logged_at)) }}</td>
                     </tr>
                     @endforeach
                 </tbody>

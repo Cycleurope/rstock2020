@@ -33,4 +33,11 @@ class DealersUpdatedEvent implements ShouldBroadcast
     {
         return new Channel('test-event');
     }
+
+    public function broadcastWith()
+    {
+        return [
+            'data' => 'key'
+        ];
+    }
 }
