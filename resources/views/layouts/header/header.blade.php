@@ -169,9 +169,29 @@
 
                     @endcan
 
+                    @can('isDealer')
                     <li class="has-submenu">
                         <a href="{{ route('products.index') }}"><i class="mdi mdi-view-dashboard"></i>Rechercher</a>
                     </li>
+                    @endcan
+                    @can('isAdmin')
+
+                    <li class="has-submenu">
+                        <a href="#"> <i class="mdi mdi-invert-colors"></i>Rechercher <div class="arrow-down"></div></a>
+                        <ul class="submenu megamenu">
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('products.index') }}">Rechercher</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('products.anomalies') }}">Anomalies</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    @endcan
 
                 </ul>
                 <!-- End navigation menu -->
