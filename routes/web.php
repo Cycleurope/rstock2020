@@ -37,6 +37,7 @@ Route::post('/reset-password', 'ChangePasswordController@sendNewEmail')->name('p
 Route::get('/users/admins', 'UserController@admins')->name('users.admins');
 
 Route::get('/products', 'ProductController@index')->name('products.index');
+Route::get('/products/anomalies', 'ProductController@anomalies')->name('products.anomalies');
 
 
 Route::get('/users/create/{role}', 'UserController@createWithRole')->name('users.create.role');
