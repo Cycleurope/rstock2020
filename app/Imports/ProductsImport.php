@@ -61,7 +61,6 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithStartRow, With
                 $product = Product::updateOrCreate([
                     'mmitno' => $MMITNO,
                 ], [
-                    'mmitno' => $MMITNO,
                     'mmitds' => $MMITDS,
                     'mmitcl' => $MMITCL,
                     'mmitgr' => $MMITGR,
