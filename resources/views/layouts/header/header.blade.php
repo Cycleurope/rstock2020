@@ -174,6 +174,12 @@
                         <a href="{{ route('products.index') }}"><i class="mdi mdi-view-dashboard"></i>Rechercher</a>
                     </li>
                     @endcan
+
+                    @can('isSales')
+                    <li class="has-submenu">
+                        <a href="{{ route('products.index') }}"><i class="mdi mdi-view-dashboard"></i>Rechercher</a>
+                    </li>
+                    @endcan
                     @can('isAdmin')
 
                     <li class="has-submenu">
