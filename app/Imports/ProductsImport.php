@@ -32,6 +32,7 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithStartRow, With
             $MMSPE3 = $row['mmspe3'];
             $MBSTAT = intval($row['mbstat']);
             $MBAVAL = $row['mbaval'];
+            if($MBAVAL == 'NULL') $MBAVAL = 0;
             $MBSTQT = intval($row['mbstqt']);
             $OIASCD = $row['oiascd'];
             $family_id = null;
