@@ -43,7 +43,7 @@
                                     <td>{{ $user->resp }}</td>
                                     <td>{!! $user->hasM3Pin() !!}</td>
                                     <td>{{ $user->updated_at }}</td>
-                                    <td><a href="{{ route('users.show', $user->username) }}" class="">Consulter</a></td>
+                                    <td><a href="{{ route('users.show', $user->username) }}" class="btn btn-purple btn-sm width-sm">Consulter</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>
