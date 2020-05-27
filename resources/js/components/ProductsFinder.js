@@ -86,14 +86,14 @@ const ProductsFinder = () => {
                     return (
                         <div>
                             <h3>Recherchez un produit en entrant son code produit, son nom, ou sa marque.</h3>
-                            <p>Un minium de 3 caractères est nécessaires pour démarrer la recherche.</p>
+                            <p className="text-primary">Un minium de 3 caractères est requis pour démarrer la recherche.</p>
                         </div>
                     )
                 } else {
                     return (
                         <div>
                             <h3>Une autre recherche ?</h3>
-                            <p>Un minium de 3 caractères est nécessaires pour démarrer la recherche.</p>
+                            <p>Un minium de 3 caractères est requis pour démarrer la recherche.</p>
                         </div>
                     )
                 }

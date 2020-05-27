@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -50,14 +51,56 @@ class ProductController extends Controller
 
     public function indexReact()
     {
+
         return view('products.index-react');
+
     }
 
     public function findByTerm($term)
     {
-        $products = Product::where('mmitno', 'like', '%'.$term.'%')
-            ->orWhere('mmitds', 'like', '%'.$term.'%')
-            ->orWhere('mmitcl', 'like', '%'.$term.'%')->get();
+
+        if(Auth::user()->role === 'admin'):
+
+            $products = Product::where(function($q) use ($term) {
+                $q->where('mmitno', 'like', '%'.$term.'%');
+                $q->orWhere('mmitds', 'like', '%'.$term.'%');
+                $q->orWhere('mmitcl', 'like', '%'.$term.'%')->get();
+            })->where(function($q) {
+                $q->whereIn('type', ['bike', 'frame']);
+            })->get();
+
+        elseif(Auth::user()->role === 'sales'):
+
+            $products = Product::where(function($q) use ($term) {
+                $q->where('mmitno', 'like', '%'.$term.'%');
+                $q->orWhere('mmitds', 'like', '%'.$term.'%');
+                $q->orWhere('mmitcl', 'like', '%'.$term.'%')->get();
+            })->where(function($q) {
+                $q->whereIn('type', ['bike', 'frame']);
+            })->get();
+
+        else:
+
+            $assortments = Auth::user()->assortments;
+            $assortments_array = [];
+            foreach($assortments as $a) {
+                array_push($assortments_array, $a->ocascd);
+            }
+
+            $products = Product::where(function($q) use ($term) {
+                $q->where('mmitno', 'like', '%'.$term.'%');
+                $q->orWhere('mmitds', 'like', '%'.$term.'%');
+                $q->orWhere('mmitcl', 'like', '%'.$term.'%')->get();
+                $q->orWhere('mbstat', 20);
+                $q->orWhere('mbstat', 50);
+            })->where(function($q) {
+                $q->whereIn('type', ['bike', 'frame']);
+                $q->whereIn('oiascd', $assortments_array);
+                $q->where('mbaval', '>', 0);
+            })->get();
+
+        endif;
+
         return response()->json($products);
     }
 

@@ -82307,7 +82307,9 @@ var ProductsFinder = function ProductsFinder() {
             /*#__PURE__*/
             react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, "Recherchez un produit en entrant son code produit, son nom, ou sa marque."),
             /*#__PURE__*/
-            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Un minium de 3 caract\xE8res est n\xE9cessaires pour d\xE9marrer la recherche."))
+            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
+              className: "text-primary"
+            }, "Un minium de 3 caract\xE8res est requis pour d\xE9marrer la recherche."))
           );
         } else {
           return (
@@ -82316,7 +82318,7 @@ var ProductsFinder = function ProductsFinder() {
             /*#__PURE__*/
             react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", null, "Une autre recherche ?"),
             /*#__PURE__*/
-            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Un minium de 3 caract\xE8res est n\xE9cessaires pour d\xE9marrer la recherche."))
+            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Un minium de 3 caract\xE8res est requis pour d\xE9marrer la recherche."))
           );
         }
       }
