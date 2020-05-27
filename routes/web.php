@@ -37,6 +37,8 @@ Route::post('/reset-password', 'ChangePasswordController@sendNewEmail')->name('p
 Route::get('/users/admins', 'UserController@admins')->name('users.admins');
 
 Route::get('/products', 'ProductController@index')->name('products.index');
+Route::get('/products-react', 'ProductController@indexReact')->name('products.index-react');
+Route::get('/products/findbyterm/{term}', 'ProductController@findByTerm')->name('product.filter.term');
 Route::get('/products/anomalies', 'ProductController@anomalies')->name('products.anomalies');
 
 

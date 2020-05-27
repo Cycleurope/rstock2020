@@ -16,6 +16,7 @@
     <link href="{{ asset("adminto/assets/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("adminto/assets/css/icons.min.css") }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("adminto/assets/css/app.css") }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>RStock</title>
     <style>
         .dataTables_filter {

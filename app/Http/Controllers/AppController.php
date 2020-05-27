@@ -22,7 +22,7 @@ class AppController extends Controller
     }
 
     public function dashboard() {
-        broadcast(new DealersUpdatedEvent);
+
         $dealers = User::where('role', 'dealer')->paginate(20);
         $banners = Banner::all();
 

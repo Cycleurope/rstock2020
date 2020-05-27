@@ -1,30 +1,20 @@
 /**
  * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
+ * includes React and other helpers. It's a great starting point while
+ * building robust, powerful web applications using React + Laravel.
  */
 
-import Echo from 'laravel-echo'
-window.io = require('socket.io-client');
+require('./bootstrap');
+var $ = require ('jquery');
+require('datatables');
+/**
+ * Next, we will create a fresh React component instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
-window.Echo = new Echo({
-  broadcaster: 'socket.io',
-  host: window.location.hostname + ':6001'
-})
+ $(document).ready(function() {
+    $('#dealers-table').dataTable();
+ });
 
-window.Echo.channel('test-event')
-  .listen('DealersUpdatedEvent', function (e) {
-    console.log('DDDDD DealersUpdatedEvent', e)
-  })
-  
-$(document).ready(function() {
-
-    $("#dealers-table").dataTable({
-        "pageLength": 25
-      });
-
-      $('.summernote-field').summernote({
-        height:300,
-      });
-
-});
+require('./components/ProductsFinder');

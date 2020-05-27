@@ -6,3 +6,12 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.form-control {
+    &.big-form-control {
+        padding: 2rem !important;
+        font-weight: 600 !important;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+}

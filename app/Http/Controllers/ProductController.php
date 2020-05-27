@@ -48,6 +48,19 @@ class ProductController extends Controller
 
     }
 
+    public function indexReact()
+    {
+        return view('products.index-react');
+    }
+
+    public function findByTerm($term)
+    {
+        $products = Product::where('mmitno', 'like', '%'.$term.'%')
+            ->orWhere('mmitds', 'like', '%'.$term.'%')
+            ->orWhere('mmitcl', 'like', '%'.$term.'%')->get();
+        return response()->json($products);
+    }
+
     public function anomalies()
     {
         $products = product::where('mbaval', '>', 0)->where('mbstat', 80)->get();
