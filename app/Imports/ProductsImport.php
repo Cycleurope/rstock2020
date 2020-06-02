@@ -55,7 +55,7 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithStartRow, With
                 if(substr($MMITGR, 0, 1) == "C") {
                     $product_type = "part";
                 } elseif((substr($MMITGR, 0, 1) == "B") && (substr($MMITNO, 0, 1) == "Y")) {
-                    if(Label::where('refeence', substr($MMITNO, 0, 6))->exists()) {
+                    if(Label::where('reference', substr($MMITNO, 0, 6))->exists()) {
                         $label = Label::where('reference', substr($MMITNO, 0, 6))->first()->designation;
                     } else $label = "";
                     $product_type = "bike";
