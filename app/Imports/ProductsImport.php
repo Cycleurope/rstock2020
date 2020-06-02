@@ -50,6 +50,7 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithStartRow, With
 
             if((strlen($MMITNO) > 6)) {
                 
+                $label = "";
 
                 if(substr($MMITGR, 0, 1) == "C") {
                     $product_type = "part";
