@@ -11,6 +11,7 @@ use Maatwebsite\Excel\Concerns\WithChunkReading;
 use App\Models\Product;
 use App\Models\ProductFamily;
 use App\Models\ProductAssortment;
+use App\Models\Label;
 
 class ProductsImport implements ToCollection, WithHeadingRow, WithStartRow, WithChunkReading, ShouldQueue
 {
@@ -48,10 +49,14 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithStartRow, With
             }
 
             if((strlen($MMITNO) > 6)) {
+                
 
                 if(substr($MMITGR, 0, 1) == "C") {
                     $product_type = "part";
                 } elseif((substr($MMITGR, 0, 1) == "B") && (substr($MMITNO, 0, 1) == "Y")) {
+                    if(Label::where('refeence', substr($MMITNO, 0, 6))->exists()) {
+                        $label = Label::where('refeence', substr($MMITNO, 0, 6))->first()->designation;
+                    } else $label = "";
                     $product_type = "bike";
                 } elseif((substr($MMITGR, 0, 1) == "X")) {
                     $product_type = "frame";
@@ -70,6 +75,7 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithStartRow, With
                     'mmspe3' => $MMSPE3,
                     'mbstat' => $MBSTAT,
                     'mbaval' => $MBAVAL,
+                    'label' => $label,
                     'size' => $size,
                     'family_id' => $family_id,
                     'type' => $product_type
