@@ -47,6 +47,7 @@ Route::get('/users/create/{role}', 'UserController@createWithRole')->name('users
 Route::get('/users/sales', 'UserController@sales')->name('users.sales');
 Route::get('/users/sales/create', 'UserController@createSales')->name('users.sales.create');
 Route::get('/users/sales/{id}/edit', 'UserController@editSales')->name('users.sales.edit');
+Route::get('/users/findbyidentifier/{identifier}', 'UserController@findByIdentifier')->name('users.filter.identifier');
 
 Route::get('/users/admins', 'UserController@admins')->name('users.admins');
 Route::get('/users/admins/create', 'UserController@createAdmin')->name('users.admins.create');

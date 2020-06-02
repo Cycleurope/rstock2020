@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use DB;
 
 class UserController extends Controller
 {
@@ -225,6 +226,15 @@ class UserController extends Controller
     public function createAdmin()
     {
         return view('users/admin.create');
+    }
+
+
+    public function findByIdentifier($identifier)
+    {
+        $users = User::where('username', 'like', '%'.$identifier.'%')
+            ->orWhere('name', 'like', '%'.$identifier.'%')->get();
+
+        return response()->json($users);
     }
 
 }

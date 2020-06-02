@@ -81924,6 +81924,8 @@ $(document).ready(function () {
 
 __webpack_require__(/*! ./components/ProductsFinder */ "./resources/js/components/ProductsFinder.js");
 
+__webpack_require__(/*! ./components/AccountsFinder */ "./resources/js/components/AccountsFinder.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -81968,6 +81970,183 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/AccountsFinder.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/AccountsFinder.js ***!
+  \***************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+var AccountsFinder = function AccountsFinder() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      accounts = _useState2[0],
+      setAccounts = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isSuccess = _useState4[0],
+      setIsSuccess = _useState4[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {});
+
+  function handleFilterInputChange(e) {
+    if (e.target.value.length >= 3) {
+      var fetchAccounts =
+      /*#__PURE__*/
+      function () {
+        var _ref = _asyncToGenerator(
+        /*#__PURE__*/
+        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  fetch("/users/findbyidentifier/" + e.target.value).then(function (res) {
+                    return res.json();
+                  }).then(function (data) {
+                    setIsSuccess(true);
+                    setAccounts(data);
+                  });
+
+                case 1:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee);
+        }));
+
+        return function fetchAccounts() {
+          return _ref.apply(this, arguments);
+        };
+      }();
+
+      fetchAccounts();
+    } else {
+      setAccounts([]);
+      setIsSuccess(false);
+    }
+  }
+
+  var renderAccountsTable = function renderAccountsTable() {
+    if (accounts.length) {
+      return (
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
+          className: "table table-condensed table-striped table-sm"
+        },
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null,
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null,
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Statut"),
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Identifiant"),
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Nom"),
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "CP / Ville"),
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Rep"),
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Pin M3"),
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "Last Update"),
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\xA0"))),
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, accounts.map(function (account) {
+          return (
+            /*#__PURE__*/
+            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
+              key: account.id
+            },
+            /*#__PURE__*/
+            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, account.active),
+            /*#__PURE__*/
+            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null,
+            /*#__PURE__*/
+            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("b", {
+              className: "text-primary"
+            }, account.username)),
+            /*#__PURE__*/
+            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null,
+            /*#__PURE__*/
+            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+              href: 'users/' + account.username,
+              className: ""
+            }, account.name)),
+            /*#__PURE__*/
+            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, account.postalcode, " ", account.city),
+            /*#__PURE__*/
+            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, account.resp),
+            /*#__PURE__*/
+            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, account.m3pin),
+            /*#__PURE__*/
+            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, account.updated_at),
+            /*#__PURE__*/
+            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+              className: "text-right"
+            },
+            /*#__PURE__*/
+            react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+              href: 'users/' + account.username,
+              className: "btn btn-light"
+            }, "Consulter")))
+          );
+        })))
+      );
+    }
+  };
+
+  return (
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null,
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+      className: "form-control big-form-control",
+      onChange: function onChange(e) {
+        return handleFilterInputChange(e);
+      }
+    }), renderAccountsTable())
+  );
+};
+
+if (document.getElementById('accounts-finder')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(
+  /*#__PURE__*/
+  react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AccountsFinder, null), document.getElementById('accounts-finder'));
+}
 
 /***/ }),
 

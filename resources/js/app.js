@@ -18,3 +18,4 @@ require('datatables');
  });
 
 require('./components/ProductsFinder');
+require('./components/AccountsFinder');
