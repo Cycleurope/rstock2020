@@ -11361,8 +11361,8 @@ a.text-dark:focus {
   font-weight: 600 !important;
   font-size: 2rem;
   margin-bottom: 2rem;
-  background: #6d798c;
-  color: #ffffff;
+  background: #6d798c !important;
+  color: #ffffff !important;
   font-weight: 600;
 }
 
