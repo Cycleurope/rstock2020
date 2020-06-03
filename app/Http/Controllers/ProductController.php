@@ -94,6 +94,7 @@ class ProductController extends Controller
             })->where(function($q) {
                 $q->whereIn('type', ['bike', 'frame']);
                 $q->where('mbaval', '>', 0);
+                $q->where('mbstat', '!=', 80);
             })->whereHas('assortments', function($q) use ($assortments_array) {
                 $q->whereIn('oiascd', $assortments_array);
             })->get();
