@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h1 class="page-title">Rechercher</h1>
+                <h1 class="page-title">Recherher</h1>
             </div>
         </div>
         

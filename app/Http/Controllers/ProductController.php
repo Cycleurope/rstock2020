@@ -91,12 +91,11 @@ class ProductController extends Controller
                 $q->where('mmitno', 'like', '%'.$term.'%');
                 $q->orWhere('mmitds', 'like', '%'.$term.'%');
                 $q->orWhere('mmitcl', 'like', '%'.$term.'%')->get();
-                $q->orWhere('mbstat', 20);
-                $q->orWhere('mbstat', 50);
             })->where(function($q) {
                 $q->whereIn('type', ['bike', 'frame']);
-                $q->whereIn('oiascd', $assortments_array);
                 $q->where('mbaval', '>', 0);
+            })->whereHas('assortments', function($q) use ($assortments_array) {
+                $q->whereIn('oiascd', $assortments_array);
             })->get();
 
         endif;
