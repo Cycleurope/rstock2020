@@ -43,7 +43,7 @@ class UpdateProducts extends Command
     {
 
         // on met tous les articles à 0 par defaut
-        DB::table('products')->update('mbstat', 80);
+        DB::table('products')->update(['mbstat' => 80]);
     
         ini_set('memory_limit', '256M');
         $ftp = Storage::createFtpDriver([
