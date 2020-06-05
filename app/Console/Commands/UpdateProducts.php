@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ProductsImport;
+use DB;
 
 class UpdateProducts extends Command
 {
@@ -40,6 +41,9 @@ class UpdateProducts extends Command
      */
     public function handle()
     {
+
+        // on met tous les articles à 0 par defaut
+        DB::table('products')->update('mbstat', 80);
     
         ini_set('memory_limit', '256M');
         $ftp = Storage::createFtpDriver([
