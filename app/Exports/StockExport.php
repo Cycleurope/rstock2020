@@ -18,6 +18,7 @@ class StockExport implements FromCollection, WithHeadings, ShouldAutoSize, WithM
     {
         return Product::whereIn('type', ['bike', 'frame'])
             ->where('mbaval', '>', 0)
+            ->where('mbstat', '!=', 80)
             ->whereHas('assortments', function($q) {
                 $q->whereIn('oiascd', ['F_BIA', 'F_GIT', 'F_PGT']);
             })
