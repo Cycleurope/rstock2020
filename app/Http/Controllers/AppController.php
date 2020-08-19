@@ -10,6 +10,7 @@ use App\Models\Banner;
 use App\Models\UserAssortment;
 use App\Exports\DealersByAssortmentExport;
 use App\Exports\StockExport;
+use App\Exports\AdminStockExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Events\DealersUpdatedEvent;
 
@@ -56,7 +57,7 @@ class AppController extends Controller
 
     public function exportAllProducts()
     {
-        return Excel::download(new StockExport, 'stock_'.date('Ymd_His').'.xlsx');
+        return Excel::download(new AdminStockExport, 'stock_'.date('Ymd_His').'.xlsx');
     }
 
 }
