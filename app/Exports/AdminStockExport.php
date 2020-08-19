@@ -27,6 +27,7 @@ class AdminStockExport implements FromCollection, WithHeadings, ShouldAutoSize, 
     {
         return [
             $product->mmitno,
+            $product->mbstat,
             $product->mmitds,
             $product->mmspe1,
             $product->mmspe2,
@@ -39,6 +40,7 @@ class AdminStockExport implements FromCollection, WithHeadings, ShouldAutoSize, 
     public function headings(): array {
         return [
             'Code Article',
+            'Statut',
             'Désignation',
             'Spec 1',
             'Spec 2',
