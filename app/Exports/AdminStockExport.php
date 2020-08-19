@@ -9,7 +9,7 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use App\Models\Product;
 
-class StockExport implements FromCollection, WithHeadings, ShouldAutoSize, WithMapping
+class AdminStockExport implements FromCollection, WithHeadings, ShouldAutoSize, WithMapping
 {
     /**
     * @return \Illuminate\Support\Collection
