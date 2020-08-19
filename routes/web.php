@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('/search', 'AppController@search')->name('search');
 Route::get('/export-dealers', 'AppController@exportDealers')->name('export.dealers');
 Route::get('/export-stock', 'AppController@exportProducts')->name('export.stock');
+Route::get('/export-stock-all', 'AppController@exportAllProducts')->name('export.stock.all');
 
 Route::get('/dashboard', 'AppController@dashboard')->name('dashboard');
 Route::get('/profile', 'AppController@profile')->name('profile');

@@ -54,4 +54,9 @@ class AppController extends Controller
         return Excel::download(new StockExport, 'stock_'.date('Ymd_His').'.xlsx');
     }
 
+    public function exportAllProducts()
+    {
+        return Excel::download(new StockExport, 'stock_'.date('Ymd_His').'.xlsx');
+    }
+
 }
